@@ -682,8 +682,12 @@ def page_perf(preds,full):
     rows=[{"Position":p,"Test R²":f"{m['r2']:.4f}","RMSE (€M)":f"{m['rmse']:.3f}",
            "MAE (€M)":f"{m['mae']:.3f}","Overfit Gap":f"{m['gap']:.2f}",
            "Seed":m["seed"],"Records":m["n"]} for p,m in META.items()]
-    df_results=pd.DataFrame(rows).set_index("Position")
-    st.dataframe(df_results,use_container_width=True,height=220)
+    df_results=pd.DataFrame(rows)
+    st.markdown(df_results.to_html(index=False,classes="",border=0).replace(
+        "<table","<table style='width:100%;color:#c8d8c8;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
+        "<th","<th style='background:#0d160d;color:#4d7a4d;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
+        "<td","<td style='padding:10px;border-bottom:1px solid #0f1f0f;'"),
+    unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════════════
