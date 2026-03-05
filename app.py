@@ -749,7 +749,11 @@ def page_lookup(full,models):
         disp["Predicted (€M)"]=disp["Predicted (€M)"].apply(lambda x:round(x/1e6,1))
         disp["Gap (€M)"]=disp["Gap (€M)"].apply(lambda x:round(x/1e6,1))
         disp["Age"]=disp["Age"].astype(int)
-        st.dataframe(disp,use_container_width=True,height=560)
+        st.markdown(disp.to_html(index=False,classes="",border=0).replace(
+            "<table","<table style='width:100%;color:#c8d8c8;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
+            "<th","<th style='background:#0d160d;color:#4d7a4d;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
+            "<td","<td style='padding:10px;border-bottom:1px solid #0f1f0f;'"),
+        unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 # PREDICT NEW PLAYER
