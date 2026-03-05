@@ -329,26 +329,29 @@ def fe(df,pos,squad_map,nation_map):
     return d
 
 def predict_df(df_fe,pos,models):
-    from sklearn.impute import SimpleImputer
-    from sklearn.feature_selection import SelectFromModel
     m=models[pos]
-    # Get feature names safely
-    try: imp_cols=m["imputer"].feature_names_in_.tolist()
+    try:
+        imp_cols=m["imputer"].feature_names_in_.tolist()
     except:
         try: imp_cols=m["features"]
         except: imp_cols=list(df_fe.select_dtypes(include=[np.number]).columns)
-    # Build X
     X=pd.DataFrame(index=df_fe.index)
     for c in imp_cols:
         X[c]=pd.to_numeric(df_fe[c],errors="coerce").fillna(0) if c in df_fe.columns else 0.0
     X=X.fillna(0)
     try:
-        # Bypass old imputer entirely - just fill NaN and use selector
+        # Get selected feature indices from selector
+        selected=m["selector"].get_support()
         X_arr=X.values.astype(float)
-        X_sel=m["selector"].transform(X_arr)
+        X_sel=X_arr[:,selected]
         return m["model"].predict(X_sel)
     except Exception as e:
-        st.error(f"Predict error ({pos}): {e}"); return np.zeros(len(df_fe))
+        try:
+            # Last resort: feed all features directly to model
+            X_arr=X.values.astype(float)
+            return m["model"].predict(X_arr)
+        except Exception as e2:
+            st.error(f"Predict error ({pos}): {e2}"); return np.zeros(len(df_fe))
 
 def run_predictions(full,models,pos_filter="All",season_filter="All"):
     results=[]
