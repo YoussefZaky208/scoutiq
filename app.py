@@ -328,12 +328,23 @@ def fe(df,pos,squad_map,nation_map):
     return d
 
 def predict_df(df_fe,pos,models):
-    m=models[pos]; imp_cols=m["imputer"].feature_names_in_.tolist()
+    m=models[pos]
+    try:
+        imp_cols=m["imputer"].feature_names_in_.tolist()
+    except:
+        imp_cols=m["features"]
     X=pd.DataFrame(index=df_fe.index)
     for c in imp_cols:
         X[c]=pd.to_numeric(df_fe[c],errors="coerce").fillna(0) if c in df_fe.columns else 0.0
     try:
-        return m["model"].predict(m["selector"].transform(m["imputer"].transform(X)))
+        import sklearn
+        from sklearn.impute import SimpleImputer
+        # Rebuild imputer with current sklearn to avoid version mismatch
+        imp=SimpleImputer(strategy="mean")
+        imp.fit(X)
+        X_imp=imp.transform(X)
+        X_sel=m["selector"].transform(X_imp)
+        return m["model"].predict(X_sel)
     except Exception as e:
         st.error(f"Predict error ({pos}): {e}"); return np.zeros(len(df_fe))
 
@@ -937,6 +948,10 @@ def page_predict(full,models):
 # MAIN
 # ══════════════════════════════════════════════════════════════
 def main():
+    # Keep session alive using query params
+    if "user" in st.query_params and not st.session_state.logged_in:
+        st.session_state.logged_in = True
+        st.session_state.username = st.query_params["user"]
     if not st.session_state.logged_in:
         auth_page(); return
     preds,full=load_all_data()
