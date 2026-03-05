@@ -605,6 +605,21 @@ def page_perf(preds,full):
 
     # Overfitting gap + dataset size
     c3,c4=st.columns(2)
+    # Dataset distribution pie chart
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>📊 Dataset Distribution</div>",unsafe_allow_html=True)
+    fig_pie=go.Figure(go.Pie(
+        labels=positions, values=n_v,
+        marker=dict(colors=colors, line=dict(color="#080c08", width=2)),
+        textinfo="label+percent+value",
+        textfont=dict(size=13, color="#e2efe2"),
+        hole=0.4,
+        hovertemplate="<b>%{label}</b><br>%{value} records<br>%{percent}<extra></extra>"))
+    fig_pie.update_layout(**PL, height=400,
+        title=dict(text="Training Records by Position", font=dict(size=13, color="#e2efe2")),
+        legend=dict(bgcolor="#0d160d", bordercolor="#1a2e1a", borderwidth=1, font=dict(color="#e2efe2")),
+        annotations=[dict(text="1,275<br>total", x=0.5, y=0.5, font=dict(size=14, color="#e2efe2"), showarrow=False)])
+    st.plotly_chart(fig_pie, use_container_width=True)
+
 
     # Scatter actual vs predicted
     st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>🎯 Actual vs Predicted Value</div>",unsafe_allow_html=True)
