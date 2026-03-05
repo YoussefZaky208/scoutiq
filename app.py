@@ -610,7 +610,7 @@ def page_perf(preds,full):
     fig_pie=go.Figure(go.Pie(
         labels=positions, values=n_v,
         marker=dict(colors=colors, line=dict(color="#080c08", width=2)),
-        textinfo="none",
+        textinfo="percent+value",
         textfont=dict(size=13, color="#e2efe2"),
         hole=0.4,
         hovertemplate="<b>%{label}</b><br>%{value} records<br>%{percent}<extra></extra>"))
