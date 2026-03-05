@@ -749,11 +749,22 @@ def page_lookup(full,models):
         disp["Predicted (€M)"]=disp["Predicted (€M)"].apply(lambda x:round(x/1e6,1))
         disp["Gap (€M)"]=disp["Gap (€M)"].apply(lambda x:round(x/1e6,1))
         disp["Age"]=disp["Age"].astype(int)
-        st.markdown(disp.to_html(index=False,classes="",border=0).replace(
-            "<table","<table style='width:100%;color:#c8d8c8;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
-            "<th","<th style='background:#0d160d;color:#4d7a4d;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
-            "<td","<td style='padding:10px;border-bottom:1px solid #0f1f0f;'"),
-        unsafe_allow_html=True)
+        html=disp.to_html(index=False,classes="",border=0)
+        html=html.replace("<table","<table style='width:100%;border-collapse:collapse;font-size:13px;font-family:DM Sans,sans-serif;'")
+        html=html.replace("<th","<th style='background:#0d1f0d;color:#00ff87;padding:12px 16px;text-align:left;border-bottom:2px solid #00ff87;border-right:1px solid #1a2e1a;text-transform:uppercase;font-size:10px;letter-spacing:1.5px;'")
+        html=html.replace("<tr>","<tr style='border-bottom:1px solid #1a2e1a;'>")
+        html=html.replace("<td","<td style='padding:11px 16px;color:#e2efe2;border-right:1px solid #1a2e1a;background:#080c08;'")
+        # Highlight negative gap in red, positive in green
+        import re
+        def color_gap(m):
+            val=m.group(1)
+            try:
+                num=float(val)
+                color="#ff5050" if num<0 else "#00ff87"
+                return f"<td style='padding:11px 16px;color:{color};font-weight:700;border-right:1px solid #1a2e1a;background:#080c08;'>{val}</td>"
+            except: return m.group(0)
+        html=re.sub(r"<td style='padding:11px 16px;color:#e2efe2;border-right:1px solid #1a2e1a;background:#080c08;'>(-?[\d.]+)</td>(?=\s*</tr>)",color_gap,html)
+        st.markdown(f"<div style='border:1px solid #1a2e1a;border-radius:12px;overflow:hidden;'>{html}</div>",unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 # PREDICT NEW PLAYER
