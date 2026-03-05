@@ -543,7 +543,7 @@ def page_perf(preds,full):
         textfont=dict(size=14,family="Bebas Neue",color="#e2efe2"),
         hovertemplate="<b>%{x}</b><br>R² = %{y:.4f}<extra></extra>"))
     fig_r2.update_layout(**PL,height=340,
-        title=dict(text="Test R² Score by Position — Higher is Better",font=dict(size=15,color="#e2efe2")),
+        title=dict(text="Test R² Score by Position",font=dict(size=15,color="#e2efe2")),
         xaxis=dict(showgrid=False,tickfont=dict(size=14,color="#e2efe2")),
         yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,1.05],tickfont=dict(color="#e2efe2"),title="R²"))
     st.plotly_chart(fig_r2,use_container_width=True)
@@ -592,7 +592,7 @@ def page_perf(preds,full):
             text=[f"{v:.2f}" for v in gap_v],textposition="outside",textfont=dict(size=13,color="#e2efe2"),
             hovertemplate="<b>%{x}</b><br>Gap = %{y:.2f}<extra></extra>"))
         fig_gap.update_layout(**PL,height=320,
-            title=dict(text="Overfitting Gap (Train R² − Test R²) — Lower is Better",font=dict(size=13,color="#e2efe2")),
+            title=dict(text="Overfitting Gap (Train R² − Test R²)",font=dict(size=13,color="#e2efe2")),
             xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
             yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,0.28],tickfont=dict(color="#e2efe2")))
         st.plotly_chart(fig_gap,use_container_width=True)
@@ -607,8 +607,7 @@ def page_perf(preds,full):
             yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(n_v)*1.3],tickfont=dict(color="#e2efe2"),title="Records"))
         st.plotly_chart(fig_n,use_container_width=True)
 
-    # Dataset distribution
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>📊 Dataset Distribution</div>",unsafe_allow_html=True)
+    # Dataset distribution - removed duplicate
     total_n=sum(n_v)
     c5,c6=st.columns(2)
     with c5:
@@ -668,7 +667,8 @@ def page_perf(preds,full):
     rows=[{"Position":p,"Test R²":f"{m['r2']:.4f}","RMSE (€M)":f"{m['rmse']:.3f}",
            "MAE (€M)":f"{m['mae']:.3f}","Overfit Gap":f"{m['gap']:.2f}",
            "Seed":m["seed"],"Records":m["n"]} for p,m in META.items()]
-    st.dataframe(pd.DataFrame(rows).set_index("Position"),use_container_width=True)
+    df_results=pd.DataFrame(rows).set_index("Position")
+    st.dataframe(df_results,use_container_width=True,height=220)
 
 
 # ══════════════════════════════════════════════════════════════
