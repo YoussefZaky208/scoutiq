@@ -1,0 +1,98 @@
+player,squad,age,market_value_in_eur,predicted_value,difference_eur,pct_difference,underrated
+Matthew Lowton,Burnley,32,2000000.0,-400470.0,2400470.0,-599.4,False
+Shkodran Mustafi,Arsenal,27,18000000.0,26379024.0,-8379024.0,-31.8,True
+Luke Shaw,Manchester Utd,26,28000000.0,26012610.0,1987390.0,7.6,False
+Jamaal Lascelles,Newcastle Utd,29,7000000.0,1977088.0,5022912.0,254.1,False
+Andreas Christensen,Chelsea,25,30000000.0,35336896.0,-5336896.0,-15.1,True
+Ethan Pinnock,Brentford,30,10000000.0,5445773.0,4554227.0,83.6,False
+Patrick van Aanholt,Crystal Palace,28,12000000.0,9504217.0,2495783.0,26.3,False
+Matt Targett,Aston Villa,23,13000000.0,16720844.0,-3720844.0,-22.3,True
+Gary Cahill,Crystal Palace,34,2500000.0,4340290.0,-1840290.0,-42.4,True
+Junior Firpo,Leeds United,24,12000000.0,9785500.0,2214500.0,22.6,False
+Séamus Coleman,Everton,30,12000000.0,7530535.0,4469465.0,59.4,False
+Séamus Coleman,Everton,32,5000000.0,6702236.0,-1702236.0,-25.4,True
+Kiko Femenía,Watford,28,6000000.0,7573320.0,-1573320.0,-20.8,True
+Willy Boly,Wolves,29,18000000.0,11386560.0,6613440.0,58.1,False
+Emerson,Tottenham,22,12000000.0,26278998.0,-14278998.0,-54.3,True
+Thiago Silva,Chelsea,35,4800000.0,7630040.0,-2830040.0,-37.1,True
+Enda Stevens,Sheffield Utd,30,5500000.0,-75612.0,5575612.0,-7374.0,False
+George Baldock,Sheffield Utd,26,6500000.0,15616624.0,-9116624.0,-58.4,True
+Çağlar Söyüncü,Leicester City,24,32000000.0,22290296.0,9709704.0,43.6,False
+Joe Gomez,Liverpool,22,35000000.0,42106308.0,-7106308.0,-16.9,True
+Craig Cathcart,Watford,30,5000000.0,5540398.0,-540398.0,-9.8,True
+Ashley Young,Aston Villa,36,1000000.0,1334676.0,-334676.0,-25.1,True
+Toby Alderweireld,Tottenham,31,20000000.0,14699469.0,5300531.0,36.1,False
+Rúben Dias,Manchester City,23,75000000.0,55467544.0,19532456.0,35.2,False
+Ainsley Maitland-Niles,Arsenal,21,18000000.0,18519942.0,-519942.0,-2.8,True
+Luke Ayling,Leeds United,29,4000000.0,-1832394.0,5832394.0,-318.3,False
+Takehiro Tomiyasu,Arsenal,22,25000000.0,27358670.0,-2358670.0,-8.6,True
+Tom Lockyer,Luton Town,28,3500000.0,5755883.0,-2255883.0,-39.2,True
+Harry Toffolo,Nott'ham Forest,27,5000000.0,13932902.0,-8932902.0,-64.1,True
+Kyle Walker,Manchester City,31,15000000.0,35592540.0,-20592540.0,-57.9,True
+Vladimír Coufal,West Ham,27,2000000.0,16405036.0,-14405036.0,-87.8,True
+Dimitris Giannoulis,Norwich City,25,6000000.0,6772674.0,-772674.0,-11.4,True
+Alex Telles,Manchester Utd,28,18000000.0,18694336.0,-694336.0,-3.7,True
+Martin Kelly,Crystal Palace,29,3500000.0,6996514.0,-3496514.0,-50.0,True
+Romain Saïss,Wolves,31,9000000.0,9796757.0,-796757.0,-8.1,True
+Ben White,Arsenal,23,45000000.0,37704460.0,7295540.0,19.3,False
+Federico Fernández,Newcastle Utd,30,7000000.0,7003764.0,-3764.0,-0.1,True
+Toby Alderweireld,Tottenham,30,35000000.0,20474250.0,14525750.0,70.9,False
+Adam Smith,Bournemouth,31,200000.0,3547967.0,-3347967.0,-94.4,True
+Jan Bednarek,Southampton,23,15000000.0,19239810.0,-4239810.0,-22.0,True
+Matt Targett,Aston Villa,24,17000000.0,31793854.0,-14793854.0,-46.5,True
+Rico Henry,Brentford,24,22000000.0,13350528.0,8649472.0,64.8,False
+Dan Burn,Brighton,29,12000000.0,6477191.0,5522809.0,85.3,False
+Oleksandr Zinchenko,Manchester City,24,32000000.0,41518412.0,-9518412.0,-22.9,True
+Trent Alexander-Arnold,Liverpool,20,110000000.0,70715544.0,39284456.0,55.6,False
+Scott McKenna,Nott'ham Forest,25,10000000.0,14312192.0,-4312192.0,-30.1,True
+Kurt Zouma,West Ham,26,32000000.0,17230680.0,14769320.0,85.7,False
+Virgil van Dijk,Liverpool,30,55000000.0,40376696.0,14623304.0,36.2,False
+Raphaël Varane,Manchester Utd,29,40000000.0,27485100.0,12514900.0,45.5,False
+David Luiz,Arsenal,33,6000000.0,8874930.0,-2874930.0,-32.4,True
+Victor Lindelöf,Manchester Utd,25,35000000.0,39864164.0,-4864164.0,-12.2,True
+Reece Burke,Luton Town,26,1800000.0,8227448.0,-6427448.0,-78.1,True
+Milos Kerkez,Bournemouth,19,18000000.0,11629157.0,6370843.0,54.8,False
+Jonny Evans,Leicester City,32,10000000.0,9392850.0,607150.0,6.5,False
+James Justin,Leicester City,22,3600000.0,16572860.0,-12972860.0,-78.3,True
+Willy Boly,Wolves,30,14000000.0,4145790.0,9854210.0,237.7,False
+Fabián Balbuena,West Ham,28,8000000.0,9363519.0,-1363519.0,-14.6,True
+Jarell Quansah,Liverpool,20,2000000.0,29376884.0,-27376884.0,-93.2,True
+Gary Cahill,Crystal Palace,33,6000000.0,2240294.0,3759706.0,167.8,False
+Ben Mee,Burnley,29,10000000.0,7039184.0,2960816.0,42.1,False
+Kyle Walker-Peters,Southampton,23,8000000.0,14149056.0,-6149056.0,-43.5,True
+Jonny Evans,Leicester City,34,3000000.0,2961688.0,38312.0,1.3,False
+Nathan Collins,Brentford,22,25000000.0,14722673.0,10277327.0,69.8,False
+James Tarkowski,Everton,30,13000000.0,15535093.0,-2535093.0,-16.3,True
+Ricardo Pereira,Leicester City,26,32000000.0,11732476.0,20267524.0,172.7,False
+César Azpilicueta,Chelsea,30,24000000.0,14383791.0,9616209.0,66.9,False
+DeAndre Yedlin,Newcastle Utd,26,8000000.0,7503015.0,496985.0,6.6,False
+Auston Trusty,Sheffield Utd,24,8000000.0,12297553.0,-4297553.0,-34.9,True
+Ricardo Pereira,Leicester City,25,40000000.0,26158500.0,13841500.0,52.9,False
+Tim Ream,Fulham,35,1000000.0,3056070.0,-2056070.0,-67.3,True
+Sergio Reguilón,Tottenham,24,28000000.0,30381034.0,-2381034.0,-7.8,True
+Ben Mee,Brentford,33,1000000.0,714160.0,285840.0,40.0,False
+Fabinho,Liverpool,26,60000000.0,30720036.0,29279964.0,95.3,False
+Harry Toffolo,Nott'ham Forest,26,3500000.0,11550929.0,-8050929.0,-69.7,True
+Nathan Collins,Wolves,21,22000000.0,16132195.0,5867805.0,36.4,False
+Angelo Ogbonna,West Ham,33,2000000.0,5276155.0,-3276155.0,-62.1,True
+Scott Dann,Crystal Palace,33,2800000.0,5611213.0,-2811213.0,-50.1,True
+Marcos Alonso,Chelsea,29,20000000.0,14103814.0,5896186.0,41.8,False
+Victor Lindelöf,Manchester Utd,26,28000000.0,32080702.0,-4080702.0,-12.7,True
+Kyle Bartley,West Brom,29,2800000.0,7550146.0,-4750146.0,-62.9,True
+Wesley Fofana,Leicester City,19,5400000.0,26852258.0,-21452258.0,-79.9,True
+Christian Kabasele,Watford,28,8000000.0,10749563.0,-2749563.0,-25.6,True
+Hassane Kamara,Watford,27,7000000.0,8504636.0,-1504636.0,-17.7,True
+Charlie Taylor,Burnley,27,4000000.0,8886025.0,-4886025.0,-55.0,True
+Adam Masina,Watford,27,4000000.0,6900996.0,-2900996.0,-42.0,True
+Harry Maguire,Manchester Utd,28,30000000.0,34675864.0,-4675864.0,-13.5,True
+Nathaniel Clyne,Crystal Palace,29,8000000.0,5415457.0,2584543.0,47.7,False
+Amari'i Bell,Luton Town,29,2500000.0,2647259.0,-147259.0,-5.6,True
+Lucas Digne,Aston Villa,28,22000000.0,13671220.0,8328780.0,60.9,False
+Andrew Robertson,Liverpool,27,55000000.0,53873116.0,1126884.0,2.1,False
+Tyrell Malacia,Manchester Utd,22,22000000.0,23158972.0,-1158972.0,-5.0,True
+Marc Cucurella,Brighton,23,55000000.0,35205148.0,19794852.0,56.2,False
+Matt Ritchie,Newcastle Utd,29,12000000.0,3532002.0,8467998.0,239.8,False
+Chris Basham,Sheffield Utd,32,3000000.0,-177.0,3000177.0,-1695015.3,False
+Moussa Niakhate,Nott'ham Forest,27,15000000.0,14328093.0,671907.0,4.7,False
+Rayan Aït-Nouri,Wolves,19,17000000.0,12946080.0,4053920.0,31.3,False
+Marc Cucurella,Chelsea,25,28000000.0,28492772.0,-492772.0,-1.7,True

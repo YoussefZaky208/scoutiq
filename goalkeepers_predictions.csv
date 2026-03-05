@@ -1,0 +1,20 @@
+player,squad,age,market_value_in_eur,predicted_value,difference_eur,pct_difference,underrated
+Danny Ward,Leicester City,29,8000000.0,6512528.0,1487472.0,22.8,False
+Jordan Pickford,Everton,26,28000000.0,19380306.0,8619694.0,44.5,False
+Bernd Leno,Arsenal,27,35000000.0,29097296.0,5902704.0,20.3,False
+Jordan Pickford,Everton,27,28000000.0,17781410.0,10218590.0,57.5,False
+Pepe Reina,Aston Villa,36,800000.0,5990246.0,-5190246.0,-86.6,True
+Fraser Forster,Southampton,33,3000000.0,3615608.0,-615608.0,-17.0,True
+Dean Henderson,Sheffield Utd,22,20000000.0,21703778.0,-1703778.0,-7.9,True
+Paulo Gazzaniga,Tottenham,27,3500000.0,17953234.0,-14453234.0,-80.5,True
+Dean Henderson,Crystal Palace,26,12000000.0,7754678.0,4245322.0,54.7,False
+Daniel Bachmann,Watford,27,3000000.0,7541502.0,-4541502.0,-60.2,True
+Martin Dúbravka,Newcastle Utd,31,5500000.0,3948872.0,1551128.0,39.3,False
+Tim Krul,Norwich City,33,2000000.0,2890501.0,-890501.0,-30.8,True
+Vicente Guaita,Crystal Palace,32,5000000.0,5467894.0,-467894.0,-8.6,True
+Nick Pope,Burnley,29,18000000.0,9442173.0,8557827.0,90.6,False
+Alisson,Liverpool,29,50000000.0,28320582.0,21679418.0,76.6,False
+Angus Gunn,Southampton,23,8000000.0,11304482.0,-3304482.0,-29.2,True
+Ederson,Manchester City,27,50000000.0,46858190.0,3141808.0,6.7,False
+Bart Verbruggen,Brighton,20,22000000.0,14485463.0,7514537.0,51.9,False
+Kasper Schmeichel,Leicester City,34,2500000.0,4629442.0,-2129442.0,-46.0,True
