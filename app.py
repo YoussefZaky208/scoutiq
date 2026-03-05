@@ -647,19 +647,34 @@ def page_perf(preds,full):
     df_p=preds[pos_sel.lower()].copy().dropna(subset=["market_value_in_eur","predicted_value"])
     max_v=max(df_p["market_value_in_eur"].max(),df_p["predicted_value"].max())/1e6
     scatter_color=META[pos_sel]["color"]
-    fig_s=go.Figure()
-    fig_s.add_trace(go.Scatter(x=[0,max_v],y=[0,max_v],mode="lines",
-        line=dict(color="#2a4a2a",dash="dot",width=1.5),showlegend=False))
+    df_p["error"]=df_p["predicted_value"]-df_p["market_value_in_eur"]
+    df_over=df_p[df_p["error"]>=0]
+    df_under=df_p[df_p["error"]<0]
     player_col=df_p["player"].tolist() if "player" in df_p.columns else [""]*len(df_p)
+    fig_s=go.Figure()
+    # Perfect prediction line
+    fig_s.add_trace(go.Scatter(x=[0,max_v],y=[0,max_v],mode="lines",
+        line=dict(color="#2a4a2a",dash="dot",width=1.5),
+        name="Perfect Prediction",showlegend=True))
+    # Undervalued dots (model > market)
     fig_s.add_trace(go.Scatter(
-        x=df_p["market_value_in_eur"]/1e6, y=df_p["predicted_value"]/1e6, mode="markers",
-        marker=dict(color=scatter_color, size=9, opacity=0.8, line=dict(color="#080c08", width=0.5)),
-        text=player_col,
-        hovertemplate="<b>%{text}</b><br>Actual: €%{x:.1f}M<br>Predicted: €%{y:.1f}M<extra></extra>"))
-    fig_s.update_layout(**PL,height=450,
+        x=df_under["market_value_in_eur"]/1e6, y=df_under["predicted_value"]/1e6, mode="markers",
+        name="Undervalued (Model > Market)",
+        marker=dict(color="#00ff87", size=9, opacity=0.85, line=dict(color="#080c08", width=0.5)),
+        text=df_under["player"].tolist() if "player" in df_under.columns else [],
+        hovertemplate="<b>%{text}</b><br>Market: €%{x:.1f}M<br>Predicted: €%{y:.1f}M<extra></extra>"))
+    # Overvalued dots (model < market)
+    fig_s.add_trace(go.Scatter(
+        x=df_over["market_value_in_eur"]/1e6, y=df_over["predicted_value"]/1e6, mode="markers",
+        name="Overvalued (Market > Model)",
+        marker=dict(color="#ff5050", size=9, opacity=0.85, line=dict(color="#080c08", width=0.5)),
+        text=df_over["player"].tolist() if "player" in df_over.columns else [],
+        hovertemplate="<b>%{text}</b><br>Market: €%{x:.1f}M<br>Predicted: €%{y:.1f}M<extra></extra>"))
+    fig_s.update_layout(**PL,height=500,
         xaxis=dict(title="Actual Market Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#e2efe2")),
         yaxis=dict(title="Model Predicted Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#e2efe2")),
-        title=dict(text=f"{pos_sel} — Actual vs Predicted · Colour = Prediction Error",font=dict(size=13,color="#e2efe2")))
+        legend=dict(bgcolor="#0d160d",bordercolor="#1a2e1a",borderwidth=1,font=dict(color="#e2efe2",size=11)),
+        title=dict(text=f"{pos_sel} — Actual vs Predicted · 🟢 Undervalued · 🔴 Overvalued",font=dict(size=13,color="#e2efe2")))
     st.plotly_chart(fig_s,use_container_width=True)
 
     # Full metrics table
