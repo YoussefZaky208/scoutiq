@@ -53,6 +53,8 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 ::-webkit-scrollbar-thumb{background:#1a2e1a;border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:#00ff87;}
 [data-testid="stToolbar"]{visibility:hidden!important;}
+[data-testid="stSidebarCollapsedControl"]{display:block!important;visibility:visible!important;}
+section[data-testid="stSidebar"]{display:block!important;visibility:visible!important;}
 [data-testid="stDecoration"]{display:none!important;}
 [data-testid="stStatusWidget"]{display:none!important;}
 .stDeployButton{display:none!important;}
