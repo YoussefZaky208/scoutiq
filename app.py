@@ -605,60 +605,6 @@ def page_perf(preds,full):
 
     # Overfitting gap + dataset size
     c3,c4=st.columns(2)
-    with c3:
-        fig_gap=go.Figure()
-        fig_gap.add_trace(go.Bar(x=positions,y=gap_v,marker_color=colors,marker_line_width=0,
-            text=[f"{v:.2f}" for v in gap_v],textposition="outside",textfont=dict(size=13,color="#e2efe2"),
-            hovertemplate="<b>%{x}</b><br>Gap = %{y:.2f}<extra></extra>"))
-        fig_gap.update_layout(**PL,height=320,
-            title=dict(text="Overfitting Gap (Train R² − Test R²)",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
-            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,0.28],tickfont=dict(color="#e2efe2")))
-        st.plotly_chart(fig_gap,use_container_width=True)
-    with c4:
-        fig_n=go.Figure()
-        fig_n.add_trace(go.Bar(x=positions,y=n_v,marker_color=colors,marker_line_width=0,
-            text=[str(v) for v in n_v],textposition="outside",textfont=dict(size=13,color="#e2efe2"),
-            hovertemplate="<b>%{x}</b><br>%{y} records<extra></extra>"))
-        fig_n.update_layout(**PL,height=320,
-            title=dict(text="Training Dataset Size — Records per Position",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
-            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(n_v)*1.3],tickfont=dict(color="#e2efe2"),title="Records"))
-        st.plotly_chart(fig_n,use_container_width=True)
-
-    # Dataset distribution - removed duplicate
-    total_n=sum(n_v)
-    c5,c6=st.columns(2)
-    with c5:
-        fig_dist1=go.Figure()
-        for pos,nv,col in zip(reversed(positions),reversed(n_v),reversed(colors)):
-            fig_dist1.add_trace(go.Bar(
-                y=[pos],x=[nv],orientation="h",marker_color=col,marker_line_width=0,
-                text=[f"{nv} ({nv/total_n*100:.1f}%)"],textposition="outside",
-                textfont=dict(color="#e2efe2",size=12),showlegend=False,
-                hovertemplate=f"<b>{pos}</b><br>%{{x}} records<extra></extra>"))
-        fig_dist1.update_layout(**PL,height=250,showlegend=False,barmode="overlay",
-            title=dict(text="Records by Position",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=True,gridcolor="#152015",tickfont=dict(color="#4d7a4d"),range=[0,max(n_v)*1.45]),
-            yaxis=dict(showgrid=False,tickfont=dict(color="#e2efe2",size=13)))
-        st.plotly_chart(fig_dist1,use_container_width=True)
-    with c6:
-        avg_ages=[]
-        for pk in ["attackers","midfielders","defenders","goalkeepers"]:
-            df_tmp=full[pk]
-            avg_ages.append(round(df_tmp["age"].mean(),1) if "age" in df_tmp.columns else 0)
-        fig_dist2=go.Figure()
-        for pos,av,col in zip(reversed(positions),reversed(avg_ages),reversed(colors)):
-            fig_dist2.add_trace(go.Bar(
-                y=[pos],x=[av],orientation="h",marker_color=col,marker_line_width=0,
-                text=[f"{av} yrs"],textposition="outside",
-                textfont=dict(color="#e2efe2",size=12),showlegend=False,
-                hovertemplate=f"<b>{pos}</b><br>Avg age: %{{x}}<extra></extra>"))
-        fig_dist2.update_layout(**PL,height=250,showlegend=False,barmode="overlay",
-            title=dict(text="Average Player Age by Position",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=True,gridcolor="#152015",tickfont=dict(color="#4d7a4d"),range=[0,max(avg_ages)*1.3],title=dict(text="Age",font=dict(color="#4d7a4d"))),
-            yaxis=dict(showgrid=False,tickfont=dict(color="#e2efe2",size=13)))
-        st.plotly_chart(fig_dist2,use_container_width=True)
 
     # Scatter actual vs predicted
     st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>🎯 Actual vs Predicted Value</div>",unsafe_allow_html=True)
