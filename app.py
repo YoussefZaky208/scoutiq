@@ -52,6 +52,14 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 ::-webkit-scrollbar-track{background:#080c08;}
 ::-webkit-scrollbar-thumb{background:#1a2e1a;border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:#00ff87;}
+[data-testid="stToolbar"]{display:none!important;}
+[data-testid="stDecoration"]{display:none!important;}
+[data-testid="stStatusWidget"]{display:none!important;}
+.stDeployButton{display:none!important;}
+#stDecoration{display:none!important;}
+button[kind="header"]{display:none!important;}
+.eyeqlp51{display:none!important;}
+.e1tzin5v0{display:none!important;}
 </style>
 """, unsafe_allow_html=True)
 
