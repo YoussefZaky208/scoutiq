@@ -1,6 +1,7 @@
 
 import streamlit as st
 import pandas as pd
+import extra_streamlit_components as stx
 import numpy as np
 import joblib
 import sqlite3
@@ -103,6 +104,15 @@ init_db()
 for k,v in [("logged_in",False),("username",""),("auth_mode","login")]:
     if k not in st.session_state: st.session_state[k]=v
 
+# Restore login from cookie
+try:
+    cookie_manager = stx.CookieManager()
+    cookie_user = cookie_manager.get("scoutvision_user")
+    if cookie_user and not st.session_state.logged_in:
+        st.session_state.logged_in = True
+        st.session_state.username = cookie_user
+except: pass
+
 def auth_page():
     _,col,_=st.columns([1,1.2,1])
     with col:
@@ -121,7 +131,12 @@ def auth_page():
             st.markdown("<br>",unsafe_allow_html=True)
             if st.button("SIGN IN →",use_container_width=True):
                 r=login_user(u,p)
-                if r: st.session_state.logged_in=True; st.session_state.username=r; st.rerun()
+                if r:
+                    st.session_state.logged_in=True
+                    st.session_state.username=r
+                    try: cookie_manager.set("scoutvision_user", r, max_age=86400)
+                    except: pass
+                    st.rerun()
                 else: st.error("Invalid credentials.")
         else:
             st.session_state.auth_mode="register"
@@ -354,7 +369,11 @@ def sidebar():
         </div>""",unsafe_allow_html=True)
         st.markdown("<br>",unsafe_allow_html=True)
         if st.button("Logout",use_container_width=True):
-            st.session_state.logged_in=False; st.session_state.username=""; st.rerun()
+            st.session_state.logged_in=False
+            st.session_state.username=""
+            try: cookie_manager.delete("scoutvision_user")
+            except: pass
+            st.rerun()
     return page
 
 # ══════════════════════════════════════════════════════════════

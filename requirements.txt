@@ -5,3 +5,4 @@ joblib
 plotly
 scikit-learn
 xgboost
+extra-streamlit-components
