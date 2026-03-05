@@ -380,7 +380,7 @@ def page_home(preds,full):
         (len(all_full),"Total Records"),
         (all_full["player"].nunique(),"Unique Players"),
         (all_full["season_label"].nunique(),"Seasons Covered"),
-        (len(all_pred[all_pred["difference_eur"]<-5e6]),"Undervalued Found"),
+        (len(all_pred[all_pred["difference_eur"]<-2e6]),"Undervalued Found"),
         (f"{np.mean([v['r2'] for v in META.values()]):.3f}","Avg Model R²"),
     ]):
         with col:
@@ -415,7 +415,7 @@ def page_home(preds,full):
 
     # Top picks — uses same preds CSVs as Undervalued tab (values now match)
     st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin-bottom:14px;'>🏆 Top Undervalued Picks</div>",unsafe_allow_html=True)
-    top=all_pred[all_pred["difference_eur"]<-5e6].nsmallest(8,"difference_eur")
+    top=all_pred[all_pred["difference_eur"]<-2e6].nsmallest(8,"difference_eur")
     for _,r in top.iterrows():
         color=POS_COLORS.get(r["position"],"#00ff87")
         gap=abs(r["difference_eur"])/1e6
