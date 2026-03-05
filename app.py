@@ -19,9 +19,9 @@ html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"
 [data-testid="stHeader"],section[data-testid="stSidebar"]{background-color:#080c08!important;color:#e2efe2!important;font-family:'DM Sans',sans-serif!important;}
 @media(prefers-color-scheme:light){html,body,[class*="css"]{background-color:#080c08!important;color:#e2efe2!important;}}
 @media(prefers-color-scheme:dark){html,body,[class*="css"]{background-color:#080c08!important;color:#e2efe2!important;}}
-#MainMenu,footer,header{visibility:hidden;}
+#MainMenu,footer{visibility:hidden;} header{visibility:visible!important;}
 .block-container{padding:2rem 2.5rem!important;max-width:1400px!important;}
-[data-testid="stSidebar"]{background:#050905!important;border-right:1px solid #1a2e1a!important;}
+[data-testid="stSidebar"]{background:#050905!important;border-right:1px solid #1a2e1a!important;} [data-testid="collapsedControl"]{display:block!important;visibility:visible!important;color:#00ff87!important;}
 [data-testid="stSidebar"] *{color:#e2efe2!important;}
 .stButton>button{background:linear-gradient(135deg,#00ff87,#00c853)!important;color:#040804!important;border:none!important;border-radius:10px!important;font-family:"DM Sans",sans-serif!important;font-weight:700!important;font-size:14px!important;padding:0.55rem 2rem!important;letter-spacing:1px!important;}
 .stButton>button:hover{opacity:0.85!important;}
