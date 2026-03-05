@@ -56,6 +56,9 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 [data-testid="stDecoration"]{display:none!important;}
 [data-testid="stStatusWidget"]{display:none!important;}
 .stDeployButton{display:none!important;}
+header[data-testid="stHeader"] a{display:none!important;}
+header[data-testid="stHeader"] button{display:none!important;}
+header[data-testid="stHeader"] .stToolbar{display:none!important;}
 </style>
 """, unsafe_allow_html=True)
 
