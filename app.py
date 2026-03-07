@@ -122,6 +122,7 @@ def auth_page():
           <div style="font-family:'Bebas Neue',sans-serif;font-size:54px;color:#00ff87;letter-spacing:6px;line-height:1;margin-bottom:10px;">ScoutVision</div>
           <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
         """,unsafe_allow_html=True)
+        st.markdown("<style>div[data-testid='stRadio'] label{color:#ffffff!important;font-size:15px!important;}</style>",unsafe_allow_html=True)
         mode=st.radio("",["Sign In","Create Account"],horizontal=True,
                       index=0 if st.session_state.auth_mode=="login" else 1,
                       label_visibility="collapsed")
