@@ -143,10 +143,14 @@ def auth_page():
                 else: st.error("Invalid credentials.")
         else:
             st.session_state.auth_mode="register"
-            u=st.text_input("Username",key="rg_u")
-            e=st.text_input("Email",key="rg_e")
-            p=st.text_input("Password",type="password",key="rg_p")
-            c=st.text_input("Confirm Password",type="password",key="rg_c")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Username</p>",unsafe_allow_html=True)
+            u=st.text_input("",key="rg_u",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Email</p>",unsafe_allow_html=True)
+            e=st.text_input("",key="rg_e",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Password</p>",unsafe_allow_html=True)
+            p=st.text_input("",type="password",key="rg_p",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Confirm Password</p>",unsafe_allow_html=True)
+            c=st.text_input("",type="password",key="rg_c",label_visibility="collapsed")
             st.markdown("<br>",unsafe_allow_html=True)
             if st.button("CREATE ACCOUNT →",use_container_width=True):
                 if not u or not e or not p: st.error("All fields required.")
@@ -686,6 +690,7 @@ def page_perf(preds,full):
 # PLAYER LOOKUP
 # ══════════════════════════════════════════════════════════════
 def page_lookup(full,models):
+    st.markdown('<script>window.scrollTo(0,0);</script>', unsafe_allow_html=True)
     st.markdown("## 🔍 Player Lookup")
     all_full=pd.concat(full.values(),ignore_index=True)
     all_squads=["All"]+sorted(all_full["squad"].dropna().unique().tolist())
