@@ -127,8 +127,10 @@ def auth_page():
                       label_visibility="collapsed")
         if mode=="Sign In":
             st.session_state.auth_mode="login"
-            u=st.text_input("Username or Email",key="li_u",placeholder="Enter username or email")
-            p=st.text_input("Password",type="password",key="li_p",placeholder="Enter password")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Username or Email</p>",unsafe_allow_html=True)
+            u=st.text_input("",key="li_u",placeholder="Enter username or email",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Password</p>",unsafe_allow_html=True)
+            p=st.text_input("",type="password",key="li_p",placeholder="Enter password",label_visibility="collapsed")
             st.markdown("<br>",unsafe_allow_html=True)
             if st.button("SIGN IN →",use_container_width=True):
                 r=login_user(u,p)
