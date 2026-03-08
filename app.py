@@ -1002,7 +1002,11 @@ def main():
         st.session_state.current_page = page
     if st.session_state.current_page != page:
         st.session_state.current_page = page
-        st.markdown('<script>parent.document.querySelector("section.main").scrollTo({"top":0,"behavior":"instant"});</script>', unsafe_allow_html=True)
+        st.session_state["_scroll_reset"] = True
+        st.rerun()
+    if st.session_state.get("_scroll_reset"):
+        st.session_state["_scroll_reset"] = False
+        st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     if   "Home"        in page: page_home(preds,full)
     elif "Undervalued" in page: page_undervalued(preds,full,models)
     elif "Performance" in page: page_perf(preds,full)
