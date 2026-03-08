@@ -1006,9 +1006,7 @@ def main():
         st.session_state.logged_in=False
         st.session_state.username=""
         auth_page(); return
-    if "user" in st.query_params and not st.session_state.logged_in:
-        st.session_state.logged_in = True
-        st.session_state.username = st.query_params["user"]
+    # query params login disabled
     if st.session_state.get("force_logout",False):
         st.session_state["force_logout"]=False
         st.session_state.logged_in=False
