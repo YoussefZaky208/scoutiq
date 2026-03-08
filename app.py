@@ -997,9 +997,11 @@ def main():
     preds,full=load_all_data()
     models=load_models()
     page=sidebar()
-    # Scroll to top when page changes
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
+    if st.session_state.current_page != page:
+        st.session_state.current_page = page
+        st.markdown('<script>parent.document.querySelector("section.main").scrollTop=0;</script>', unsafe_allow_html=True)
     if st.session_state.current_page != page:
         st.session_state.current_page = page
         st.session_state["_scroll_reset"] = True
