@@ -52,6 +52,16 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 ::-webkit-scrollbar-track{background:#080c08;}
 ::-webkit-scrollbar-thumb{background:#1a2e1a;border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:#00ff87;}
+.stSelectbox label{color:#d4e8d4!important;}
+.stSelectbox label p{color:#d4e8d4!important;}
+.stNumberInput label{color:#d4e8d4!important;}
+.stNumberInput label p{color:#d4e8d4!important;}
+.stTextInput label{color:#d4e8d4!important;}
+.stTextInput label p{color:#d4e8d4!important;}
+div[data-baseweb="select"] div{color:#d4e8d4!important;}
+.stSelectbox div[data-testid="stMarkdownContainer"] p{color:#d4e8d4!important;}
+label[data-testid="stWidgetLabel"] p{color:#d4e8d4!important;}
+label[data-testid="stWidgetLabel"]{color:#d4e8d4!important;}
 div[data-testid="stRadio"] p{color:#ffffff!important;font-size:15px!important;}
 div[data-testid="stRadio"] label p{color:#ffffff!important;}
 div[data-testid="stRadio"] span{color:#ffffff!important;}
