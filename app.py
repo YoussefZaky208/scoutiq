@@ -406,8 +406,9 @@ def sidebar():
         if st.button("Logout",use_container_width=True):
             st.session_state.logged_in=False
             st.session_state.username=""
+            st.session_state.auth_mode="login"
             st.query_params.clear()
-            st.rerun()
+            st.switch_page("app.py")
     return page
 
 # ══════════════════════════════════════════════════════════════
