@@ -402,6 +402,7 @@ def sidebar():
 # HOME
 # ══════════════════════════════════════════════════════════════
 def page_home(preds,full):
+    st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     all_pred=pd.concat(preds.values(),ignore_index=True)
     all_full=pd.concat(full.values(),ignore_index=True)
@@ -488,6 +489,7 @@ def page_home(preds,full):
 #                      so values always match. No model re-runs = fast.
 # ══════════════════════════════════════════════════════════════
 def page_undervalued(preds,full,models):
+    st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     st.markdown("## 💎 Undervalued Players")
     st.markdown('''<div style="color:#4d7a4d;margin-bottom:20px;font-size:13px;">Players where the model predicts a significantly higher value than the transfer market assigned. The <b style="color:#00ff87;">gap bar</b> shows how undervalued they are as a percentage — a full bar means the model thinks they are worth significantly more than their listed price.</div>''',unsafe_allow_html=True)
@@ -698,6 +700,7 @@ def page_perf(preds,full):
 # PLAYER LOOKUP
 # ══════════════════════════════════════════════════════════════
 def page_lookup(full,models):
+    st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     st.markdown('<script>window.scrollTo(0,0);</script>', unsafe_allow_html=True)
     st.markdown("## 🔍 Player Lookup")
