@@ -407,6 +407,8 @@ def sidebar():
         if st.button("Logout",use_container_width=True):
             st.session_state.logged_in=False
             st.session_state.username=""
+            st.query_params.clear()
+            st.session_state["force_logout"]=True
             try: cookie_manager.delete("scoutvision_user")
             except: pass
             st.rerun()
@@ -1006,6 +1008,11 @@ def main():
     if "user" in st.query_params and not st.session_state.logged_in:
         st.session_state.logged_in = True
         st.session_state.username = st.query_params["user"]
+    if st.session_state.get("force_logout",False):
+        st.session_state["force_logout"]=False
+        st.session_state.logged_in=False
+        st.session_state.username=""
+        auth_page(); return
     if not st.session_state.logged_in:
         auth_page(); return
     preds,full=load_all_data()
