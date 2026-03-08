@@ -52,6 +52,11 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 ::-webkit-scrollbar-track{background:#080c08;}
 ::-webkit-scrollbar-thumb{background:#1a2e1a;border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:#00ff87;}
+div[data-testid="stRadio"] p{color:#ffffff!important;font-size:15px!important;}
+div[data-testid="stRadio"] label p{color:#ffffff!important;}
+div[data-testid="stRadio"] span{color:#ffffff!important;}
+.stTextInput label p{color:#ffffff!important;}
+.stTextInput>label{color:#ffffff!important;}
 
 </style>
 """, unsafe_allow_html=True)
@@ -118,7 +123,7 @@ def auth_page():
     _,col,_=st.columns([1,1.2,1])
     with col:
         st.markdown("<br><br>",unsafe_allow_html=True)
-        st.markdown("""<div class="card" style="text-align:center;padding:44px 36px;">
+        st.markdown("""<div class="card" style="text-align:center;padding:44px 36px;color:#ffffff!important;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:54px;color:#00ff87;letter-spacing:6px;line-height:1;margin-bottom:10px;">ScoutVision</div>
           <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
         """,unsafe_allow_html=True)
