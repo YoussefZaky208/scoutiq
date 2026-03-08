@@ -997,6 +997,12 @@ def main():
     preds,full=load_all_data()
     models=load_models()
     page=sidebar()
+    # Scroll to top when page changes
+    if "current_page" not in st.session_state:
+        st.session_state.current_page = page
+    if st.session_state.current_page != page:
+        st.session_state.current_page = page
+        st.markdown('<script>parent.document.querySelector("section.main").scrollTo({"top":0,"behavior":"instant"});</script>', unsafe_allow_html=True)
     if   "Home"        in page: page_home(preds,full)
     elif "Undervalued" in page: page_undervalued(preds,full,models)
     elif "Performance" in page: page_perf(preds,full)
