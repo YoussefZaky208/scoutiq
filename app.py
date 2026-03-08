@@ -33,16 +33,16 @@ html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"
 .stat-card{background:#0d160d;border:1px solid #1a2e1a;border-radius:16px;padding:22px 16px;text-align:center;transition:border-color 0.2s;}
 .stat-card:hover{border-color:#00ff87!important;}
 .stat-num{font-family:"Bebas Neue",sans-serif;font-size:2.8rem;color:#00ff87;letter-spacing:2px;line-height:1;}
-.stat-lbl{color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:2px;margin-top:6px;}
-.rng{background:#0a120a;border:1px solid #1a2e1a;border-radius:6px;padding:5px 10px;font-size:11px;color:#4d7a4d;margin-bottom:3px;display:block;}
+.stat-lbl{color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:2px;margin-top:6px;}
+.rng{background:#0a120a;border:1px solid #1a2e1a;border-radius:6px;padding:5px 10px;font-size:11px;color:#d4e8d4;margin-bottom:3px;display:block;}
 .p90-badge{display:inline-block;background:rgba(0,212,255,0.15);color:#00d4ff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:20px;letter-spacing:1px;margin-left:6px;vertical-align:middle;}
 .stTabs [data-baseweb="tab-list"]{background:#050905!important;border-bottom:1px solid #1a2e1a!important;}
-.stTabs [data-baseweb="tab"]{background:transparent!important;color:#4d7a4d!important;padding:0.6rem 1.4rem!important;border-radius:8px 8px 0 0!important;}
+.stTabs [data-baseweb="tab"]{background:transparent!important;color:#d4e8d4!important;padding:0.6rem 1.4rem!important;border-radius:8px 8px 0 0!important;}
 .stTabs [aria-selected="true"]{background:rgba(0,255,135,0.08)!important;color:#00ff87!important;border-bottom:2px solid #00ff87!important;}
 div[data-testid="stDataFrame"]{background:#080c08!important;border-radius:12px!important;overflow:hidden!important;}
 div[data-testid="stDataFrame"] *{color:#d4e8d4!important;background:#080c08!important;}
 div[data-testid="stDataFrame"] table{color:#d4e8d4!important;background:#080c08!important;}
-div[data-testid="stDataFrame"] thead tr th{background:#0d160d!important;color:#4d7a4d!important;font-size:11px!important;text-transform:uppercase!important;letter-spacing:1px!important;border-bottom:1px solid #1a2e1a!important;}
+div[data-testid="stDataFrame"] thead tr th{background:#0d160d!important;color:#d4e8d4!important;font-size:11px!important;text-transform:uppercase!important;letter-spacing:1px!important;border-bottom:1px solid #1a2e1a!important;}
 div[data-testid="stDataFrame"] tbody tr td{background:#080c08!important;color:#d4e8d4!important;border-bottom:1px solid #0f1f0f!important;font-size:13px!important;}
 div[data-testid="stDataFrame"] tbody tr:hover td{background:#0d160d!important;color:#00ff87!important;}
 div[data-testid="stDataFrame"] [data-testid="glideDataEditor"]{background:#080c08!important;}
@@ -125,7 +125,7 @@ def auth_page():
         st.markdown("<br><br>",unsafe_allow_html=True)
         st.markdown("""<div class="card" style="text-align:center;padding:44px 36px;color:#ffffff!important;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:54px;color:#00ff87;letter-spacing:6px;line-height:1;margin-bottom:10px;">ScoutVision</div>
-          <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
+          <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
         """,unsafe_allow_html=True)
         st.markdown("<style>div[data-testid='stRadio'] label{color:#ffffff!important;font-size:15px!important;}</style>",unsafe_allow_html=True)
         mode=st.radio("",["Sign In","Create Account"],horizontal=True,
@@ -386,7 +386,7 @@ def sidebar():
                            "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
         st.markdown("<br><br><br>",unsafe_allow_html=True)
         st.markdown(f"""<div style="border-top:1px solid #1a2e1a;padding-top:16px;">
-          <div style="color:#4d7a4d;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Logged in as</div>
+          <div style="color:#d4e8d4;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Logged in as</div>
           <div style="color:#00ff87;font-weight:600;margin-top:4px;">{st.session_state.username}</div>
         </div>""",unsafe_allow_html=True)
         st.markdown("<br>",unsafe_allow_html=True)
@@ -412,7 +412,7 @@ def page_home(preds,full):
       <div style="font-family:'Bebas Neue',sans-serif;font-size:3.8rem;line-height:1.05;margin-bottom:10px;">
         Transfer Market<br><span style="color:#00ff87;">Intelligence</span>
       </div>
-      <div style="color:#4d7a4d;font-size:14px;max-width:600px;">
+      <div style="color:#d4e8d4;font-size:14px;max-width:600px;">
         An AI-powered framework for detecting undervalued Premier League talent using machine learning and performance analytics.
       </div>
     </div>""",unsafe_allow_html=True)
@@ -434,7 +434,7 @@ def page_home(preds,full):
     st.markdown("<br>",unsafe_allow_html=True)
 
     # Model overview cards
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin-bottom:14px;'>📋 Model Overview</div>",unsafe_allow_html=True)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin-bottom:14px;'>📋 Model Overview</div>",unsafe_allow_html=True)
     cols=st.columns(4)
     for i,(pos,m) in enumerate(META.items()):
         with cols[i]:
@@ -443,11 +443,11 @@ def page_home(preds,full):
               <div style="font-size:26px;margin-bottom:8px;">{m['icon']}</div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#d4e8d4;">{pos}</div>
               <div style="color:{m['color']};font-family:'Bebas Neue',sans-serif;font-size:44px;margin:4px 0;line-height:1;">{m['r2']:.4f}</div>
-              <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Test R²</div>
+              <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Test R²</div>
               <div style="background:#152015;border-radius:4px;height:4px;margin-bottom:12px;">
                 <div style="width:{bar_w}%;height:100%;background:{m['color']};border-radius:4px;"></div>
               </div>
-              <div style="display:flex;justify-content:space-between;font-size:11px;color:#4d7a4d;">
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:#d4e8d4;">
                 <span>RMSE <b style="color:#d4e8d4;">€{m['rmse']:.1f}M</b></span>
                 <span>MAE <b style="color:#d4e8d4;">€{m['mae']:.1f}M</b></span>
                 <span>Records <b style="color:#d4e8d4;">{m['n']}</b></span>
@@ -457,7 +457,7 @@ def page_home(preds,full):
     st.markdown("<br>",unsafe_allow_html=True)
 
     # Top picks — uses same preds CSVs as Undervalued tab (values now match)
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin-bottom:14px;'>🏆 Top Undervalued Picks</div>",unsafe_allow_html=True)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin-bottom:14px;'>🏆 Top Undervalued Picks</div>",unsafe_allow_html=True)
     top=all_pred[all_pred["difference_eur"]<-2e6].nsmallest(8,"difference_eur")
     for _,r in top.iterrows():
         color=POS_COLORS.get(r["position"],"#00ff87")
@@ -469,14 +469,14 @@ def page_home(preds,full):
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
             <div style="display:flex;align-items:center;gap:10px;">
               <span style="font-weight:700;font-size:15px;color:#d4e8d4;">{r["player"]}</span>
-              <span style="color:#4d7a4d;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
+              <span style="color:#d4e8d4;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
               <span style="background:{color}22;color:{color};font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;">{r["position"][:3].upper()}</span>
-              <span style="background:#1a2e1a;color:#4d7a4d;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
+              <span style="background:#1a2e1a;color:#d4e8d4;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
             </div>
             <div style="display:flex;align-items:center;gap:12px;">
-              <span style="color:#4d7a4d;font-size:12px;">Market <b style="color:#d4e8d4;">{fmt(r["market_value_in_eur"]/1e6)}</b></span>
-              <span style="color:#2a4a2a;">→</span>
-              <span style="color:#4d7a4d;font-size:12px;">Model <b style="color:{color};">{fmt(r["predicted_value"]/1e6)}</b></span>
+              <span style="color:#d4e8d4;font-size:12px;">Market <b style="color:#d4e8d4;">{fmt(r["market_value_in_eur"]/1e6)}</b></span>
+              <span style="color:#d4e8d4;">→</span>
+              <span style="color:#d4e8d4;font-size:12px;">Model <b style="color:{color};">{fmt(r["predicted_value"]/1e6)}</b></span>
               <span style="background:rgba(255,80,80,0.12);color:#ff5050;font-weight:700;padding:4px 12px;border-radius:8px;font-size:13px;">
                 -{fmt(gap)} <span style="font-size:10px;opacity:0.7;">({pct:.0f}%)</span>
               </span>
@@ -492,7 +492,7 @@ def page_undervalued(preds,full,models):
     st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     st.markdown("## 💎 Undervalued Players")
-    st.markdown('''<div style="color:#4d7a4d;margin-bottom:20px;font-size:13px;">Players where the model predicts a significantly higher value than the transfer market assigned. The <b style="color:#00ff87;">gap bar</b> shows how undervalued they are as a percentage — a full bar means the model thinks they are worth significantly more than their listed price.</div>''',unsafe_allow_html=True)
+    st.markdown('''<div style="color:#d4e8d4;margin-bottom:20px;font-size:13px;">Players where the model predicts a significantly higher value than the transfer market assigned. The <b style="color:#00ff87;">gap bar</b> shows how undervalued they are as a percentage — a full bar means the model thinks they are worth significantly more than their listed price.</div>''',unsafe_allow_html=True)
 
     c1,c2,c3,c4=st.columns(4)
     with c1: pos_f=st.selectbox("Position",["All","Attackers","Midfielders","Defenders","Goalkeepers"])
@@ -521,7 +521,7 @@ def page_undervalued(preds,full,models):
     elif sort_by=="Youngest": under=under.sort_values("age")
     elif sort_by=="% Undervalued": under=under.sort_values("pct_undervalued",ascending=False)
 
-    st.markdown(f"<div style='color:#4d7a4d;margin-bottom:16px;'><b style='color:#00ff87;font-size:18px;'>{len(under)}</b> undervalued players found</div>",unsafe_allow_html=True)
+    st.markdown(f"<div style='color:#d4e8d4;margin-bottom:16px;'><b style='color:#00ff87;font-size:18px;'>{len(under)}</b> undervalued players found</div>",unsafe_allow_html=True)
 
     if under.empty: st.warning("No undervalued players found for selected filters."); return
 
@@ -539,23 +539,23 @@ def page_undervalued(preds,full,models):
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
       <span style="font-weight:700;font-size:16px;color:#d4e8d4;">{r["player"]}</span>
-      <span style="color:#4d7a4d;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
+      <span style="color:#d4e8d4;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
       <span style="background:{color}22;color:{color};font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;">{pos_short}</span>
-      <span style="background:#1a2e1a;color:#4d7a4d;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
+      <span style="background:#1a2e1a;color:#d4e8d4;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
     </div>
     <div style="text-align:right;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#ff5050;line-height:1;">-{fmt(gap_m)}</div>
-      <div style="color:#4d7a4d;font-size:10px;">{pct:.0f}% undervalued</div>
+      <div style="color:#d4e8d4;font-size:10px;">{pct:.0f}% undervalued</div>
     </div>
   </div>
   <div style="margin-top:12px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;">
     <div>
-      <div style="color:#4d7a4d;font-size:9px;text-transform:uppercase;margin-bottom:2px;">Market Value</div>
+      <div style="color:#d4e8d4;font-size:9px;text-transform:uppercase;margin-bottom:2px;">Market Value</div>
       <div style="font-size:15px;font-weight:700;color:#d4e8d4;">{fmt(mv)}</div>
     </div>
     <div style="color:#1a2e1a;font-size:18px;">→</div>
     <div>
-      <div style="color:#4d7a4d;font-size:9px;text-transform:uppercase;margin-bottom:2px;">Model Predicted</div>
+      <div style="color:#d4e8d4;font-size:9px;text-transform:uppercase;margin-bottom:2px;">Model Predicted</div>
       <div style="font-size:15px;font-weight:700;color:{color};">{fmt(pv)}</div>
     </div>
     <div style="flex:1;min-width:100px;">
@@ -571,7 +571,7 @@ def page_undervalued(preds,full,models):
 # ══════════════════════════════════════════════════════════════
 def page_perf(preds,full):
     st.markdown("## 📊 Model Performance")
-    st.markdown("<div style='color:#4d7a4d;margin-bottom:24px;font-size:13px;'>Evaluation metrics for 4 position-specific XGBoost models — Premier League 2019–2024.</div>",unsafe_allow_html=True)
+    st.markdown("<div style='color:#d4e8d4;margin-bottom:24px;font-size:13px;'>Evaluation metrics for 4 position-specific XGBoost models — Premier League 2019–2024.</div>",unsafe_allow_html=True)
 
     positions=list(META.keys())
     colors=[META[p]["color"] for p in positions]
@@ -632,7 +632,7 @@ def page_perf(preds,full):
     # Overfitting gap + dataset size
     c3,c4=st.columns(2)
     # Dataset distribution pie chart
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>📊 Dataset Distribution</div>",unsafe_allow_html=True)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin:20px 0 14px;'>📊 Dataset Distribution</div>",unsafe_allow_html=True)
     fig_pie=go.Figure(go.Pie(
         labels=positions, values=n_v,
         marker=dict(colors=colors, line=dict(color="#080c08", width=2)),
@@ -648,7 +648,7 @@ def page_perf(preds,full):
 
 
     # Scatter actual vs predicted
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>🎯 Actual vs Predicted Value</div>",unsafe_allow_html=True)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin:20px 0 14px;'>🎯 Actual vs Predicted Value</div>",unsafe_allow_html=True)
     pos_sel=st.selectbox("Select Position",list(META.keys()),key="sc_pos")
     df_p=preds[pos_sel.lower()].copy().dropna(subset=["market_value_in_eur","predicted_value"])
     max_v=max(df_p["market_value_in_eur"].max(),df_p["predicted_value"].max())/1e6
@@ -660,7 +660,7 @@ def page_perf(preds,full):
     fig_s=go.Figure()
     # Perfect prediction line
     fig_s.add_trace(go.Scatter(x=[0,max_v],y=[0,max_v],mode="lines",
-        line=dict(color="#2a4a2a",dash="dot",width=1.5),
+        line=dict(color="#d4e8d4",dash="dot",width=1.5),
         name="Perfect Prediction",showlegend=True))
     # Undervalued dots (model > market)
     fig_s.add_trace(go.Scatter(
@@ -684,14 +684,14 @@ def page_perf(preds,full):
     st.plotly_chart(fig_s,use_container_width=True)
 
     # Full metrics table
-    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#4d7a4d;margin:20px 0 14px;'>📋 Full Results Summary</div>",unsafe_allow_html=True)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin:20px 0 14px;'>📋 Full Results Summary</div>",unsafe_allow_html=True)
     rows=[{"Position":p,"Test R²":f"{m['r2']:.4f}","RMSE (€M)":f"{m['rmse']:.3f}",
            "MAE (€M)":f"{m['mae']:.3f}","Overfit Gap":f"{m['gap']:.2f}",
            "Seed":m["seed"],"Records":m["n"]} for p,m in META.items()]
     df_results=pd.DataFrame(rows)
     st.markdown(df_results.to_html(index=False,classes="",border=0).replace(
         "<table","<table style='width:100%;color:#d4e8d4;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
-        "<th","<th style='background:#0d160d;color:#4d7a4d;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
+        "<th","<th style='background:#0d160d;color:#d4e8d4;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
         "<td","<td style='padding:10px;border-bottom:1px solid #0f1f0f;'"),
     unsafe_allow_html=True)
 
@@ -731,7 +731,7 @@ def page_lookup(full,models):
     if not results: st.warning("No predictions."); return
     res=pd.concat(results,ignore_index=True)
 
-    st.markdown(f"<div style='color:#4d7a4d;margin-bottom:16px;'><b style='color:#00ff87;font-size:18px;'>{len(res)}</b> players found</div>",unsafe_allow_html=True)
+    st.markdown(f"<div style='color:#d4e8d4;margin-bottom:16px;'><b style='color:#00ff87;font-size:18px;'>{len(res)}</b> players found</div>",unsafe_allow_html=True)
 
     if len(res)==1:
         r=res.iloc[0]; color=POS_COLORS.get(r["position"],"#00ff87")
@@ -742,20 +742,20 @@ def page_lookup(full,models):
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
             <div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;">{r["player"]}</div>
-              <div style="color:#4d7a4d;font-size:13px;">{r["squad"]} · Age {int(r["age"])} · {r["position"]} · {sl}</div>
+              <div style="color:#d4e8d4;font-size:13px;">{r["squad"]} · Age {int(r["age"])} · {r["position"]} · {sl}</div>
             </div>
             <div style="background:{dc}22;color:{dc};padding:8px 18px;border-radius:10px;font-weight:700;font-size:14px;">{lbl}</div>
           </div>
           <div style="display:flex;gap:40px;flex-wrap:wrap;">
-            <div><div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Market Value</div>
+            <div><div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Market Value</div>
                  <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;">{fmt(act)}</div></div>
             <div style="color:#1a2e1a;font-size:28px;align-self:flex-end;padding-bottom:4px;">→</div>
-            <div><div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Model Predicted</div>
+            <div><div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Model Predicted</div>
                  <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:{color};">{fmt(pred)}</div></div>
             <div style="margin-left:auto;">
-              <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Valuation Gap</div>
+              <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;margin-bottom:4px;">Valuation Gap</div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:{dc};">{"−" if diff<0 else "+"}€{abs(diff):.1f}M</div>
-              <div style="color:#4d7a4d;font-size:11px;">{pct:.1f}% {"undervalued" if diff<0 else "overvalued"}</div>
+              <div style="color:#d4e8d4;font-size:11px;">{pct:.1f}% {"undervalued" if diff<0 else "overvalued"}</div>
             </div>
           </div>
         </div>""",unsafe_allow_html=True)
@@ -794,7 +794,7 @@ def rng_label(label,mn,avg,mx,unit="",per90=False):
 
 def page_predict(full,models):
     st.markdown("## 🤖 Predict New Player Market Value")
-    st.markdown("""<div style="background:#0d160d;border:1px solid #1a2e1a;border-left:3px solid #00ff87;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:#4d7a4d;">
+    st.markdown("""<div style="background:#0d160d;border:1px solid #1a2e1a;border-left:3px solid #00ff87;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:#d4e8d4;">
         <b style="color:#00ff87;">How this works:</b> Enter a player's season stats. The model uses performance metrics, club prestige, and season year to estimate fair market value.
         Stats marked <span class="p90-badge">PER 90</span> must be entered as per-90-minute rates, not season totals.
     </div>""",unsafe_allow_html=True)
@@ -968,11 +968,11 @@ def page_predict(full,models):
             color=POS_COLORS.get(pos_sel,"#00ff87")
             top6=squad in TOP6
             st.markdown(f"""<div class="card" style="border-top:3px solid {color};margin-top:20px;text-align:center;padding:40px;">
-              <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">
+              <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">
                 Predicted Market Value · {pos_sel} · {season}</div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:88px;color:{color};letter-spacing:4px;line-height:1;">
                 €{pred_m:.1f}M</div>
-              <div style="color:#4d7a4d;font-size:13px;margin-top:14px;">
+              <div style="color:#d4e8d4;font-size:13px;margin-top:14px;">
                 {squad} {"⭐ Top 6 Club" if top6 else ""} · Age {age} · {pos_sel}
               </div>
             </div>""",unsafe_allow_html=True)
