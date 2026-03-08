@@ -157,8 +157,7 @@ def auth_page():
                 if r:
                     st.session_state.logged_in=True
                     st.session_state.username=r
-                    try: # cookie_manager.set("scoutvision_user", r, max_age=86400)
-                    except: pass
+                    pass # cookie disabled
                     st.rerun()
                 else: st.error("Invalid credentials.")
         else:
