@@ -16,18 +16,18 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 :root{color-scheme:dark only!important;}
 html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,
-[data-testid="stHeader"],section[data-testid="stSidebar"]{background-color:#080c08!important;color:#e2efe2!important;font-family:'DM Sans',sans-serif!important;}
-@media(prefers-color-scheme:light){html,body,[class*="css"]{background-color:#080c08!important;color:#e2efe2!important;}}
-@media(prefers-color-scheme:dark){html,body,[class*="css"]{background-color:#080c08!important;color:#e2efe2!important;}}
+[data-testid="stHeader"],section[data-testid="stSidebar"]{background-color:#080c08!important;color:#d4e8d4!important;font-family:'DM Sans',sans-serif!important;}
+@media(prefers-color-scheme:light){html,body,[class*="css"]{background-color:#080c08!important;color:#d4e8d4!important;}}
+@media(prefers-color-scheme:dark){html,body,[class*="css"]{background-color:#080c08!important;color:#d4e8d4!important;}}
 #MainMenu,footer{visibility:hidden;} header{visibility:visible!important;}
 .block-container{padding:2rem 2.5rem!important;max-width:1400px!important;}
 [data-testid="stSidebar"]{background:#050905!important;border-right:1px solid #1a2e1a!important;} [data-testid="collapsedControl"]{display:block!important;visibility:visible!important;color:#00ff87!important;}
-[data-testid="stSidebar"] *{color:#e2efe2!important;}
+[data-testid="stSidebar"] *{color:#d4e8d4!important;}
 .stButton>button{background:linear-gradient(135deg,#00ff87,#00c853)!important;color:#040804!important;border:none!important;border-radius:10px!important;font-family:"DM Sans",sans-serif!important;font-weight:700!important;font-size:14px!important;padding:0.55rem 2rem!important;letter-spacing:1px!important;}
 .stButton>button:hover{opacity:0.85!important;}
-.stTextInput>div>div>input,.stNumberInput>div>div>input{background:#0a120a!important;border:1px solid #1f3a1f!important;border-radius:10px!important;color:#e2efe2!important;font-size:14px!important;}
+.stTextInput>div>div>input,.stNumberInput>div>div>input{background:#0a120a!important;border:1px solid #1f3a1f!important;border-radius:10px!important;color:#d4e8d4!important;font-size:14px!important;}
 .stTextInput>div>div>input:focus,.stNumberInput>div>div>input:focus{border-color:#00ff87!important;box-shadow:0 0 0 2px rgba(0,255,135,0.15)!important;}
-.stSelectbox>div>div{background:#0a120a!important;border:1px solid #1f3a1f!important;border-radius:10px!important;color:#e2efe2!important;}
+.stSelectbox>div>div{background:#0a120a!important;border:1px solid #1f3a1f!important;border-radius:10px!important;color:#d4e8d4!important;}
 .card{background:#0d160d;border:1px solid #1a2e1a;border-radius:18px;padding:28px;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.5);}
 .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff87,transparent);}
 .stat-card{background:#0d160d;border:1px solid #1a2e1a;border-radius:16px;padding:22px 16px;text-align:center;transition:border-color 0.2s;}
@@ -40,10 +40,10 @@ html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"
 .stTabs [data-baseweb="tab"]{background:transparent!important;color:#4d7a4d!important;padding:0.6rem 1.4rem!important;border-radius:8px 8px 0 0!important;}
 .stTabs [aria-selected="true"]{background:rgba(0,255,135,0.08)!important;color:#00ff87!important;border-bottom:2px solid #00ff87!important;}
 div[data-testid="stDataFrame"]{background:#080c08!important;border-radius:12px!important;overflow:hidden!important;}
-div[data-testid="stDataFrame"] *{color:#c8d8c8!important;background:#080c08!important;}
-div[data-testid="stDataFrame"] table{color:#c8d8c8!important;background:#080c08!important;}
+div[data-testid="stDataFrame"] *{color:#d4e8d4!important;background:#080c08!important;}
+div[data-testid="stDataFrame"] table{color:#d4e8d4!important;background:#080c08!important;}
 div[data-testid="stDataFrame"] thead tr th{background:#0d160d!important;color:#4d7a4d!important;font-size:11px!important;text-transform:uppercase!important;letter-spacing:1px!important;border-bottom:1px solid #1a2e1a!important;}
-div[data-testid="stDataFrame"] tbody tr td{background:#080c08!important;color:#c8d8c8!important;border-bottom:1px solid #0f1f0f!important;font-size:13px!important;}
+div[data-testid="stDataFrame"] tbody tr td{background:#080c08!important;color:#d4e8d4!important;border-bottom:1px solid #0f1f0f!important;font-size:13px!important;}
 div[data-testid="stDataFrame"] tbody tr:hover td{background:#0d160d!important;color:#00ff87!important;}
 div[data-testid="stDataFrame"] [data-testid="glideDataEditor"]{background:#080c08!important;}
 div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
@@ -65,7 +65,7 @@ PROJECT_PATH = "./"
 DB_PATH = "./users.db"
 TOP6 = ["Manchester City","Liverpool","Chelsea","Arsenal","Manchester Utd","Tottenham"]
 SEASONS = ["All","2019-20","2020-21","2021-22","2022-23","2023-24"]
-PL = dict(plot_bgcolor="#0d160d",paper_bgcolor="#080c08",font_color="#e2efe2",
+PL = dict(plot_bgcolor="#0d160d",paper_bgcolor="#080c08",font_color="#d4e8d4",
           font_family="DM Sans",margin=dict(t=50,b=30,l=30,r=30))
 META = {
     "Attackers":  {"r2":0.7981,"rmse":9.823, "mae":6.912,"seed":42,"gap":0.17,"n":297,"color":"#00ff87","icon":"⚽"},
@@ -441,16 +441,16 @@ def page_home(preds,full):
             bar_w=int(m["r2"]*100)
             st.markdown(f"""<div class="card" style="border-top:3px solid {m['color']};">
               <div style="font-size:26px;margin-bottom:8px;">{m['icon']}</div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#e2efe2;">{pos}</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#d4e8d4;">{pos}</div>
               <div style="color:{m['color']};font-family:'Bebas Neue',sans-serif;font-size:44px;margin:4px 0;line-height:1;">{m['r2']:.4f}</div>
               <div style="color:#4d7a4d;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Test R²</div>
               <div style="background:#152015;border-radius:4px;height:4px;margin-bottom:12px;">
                 <div style="width:{bar_w}%;height:100%;background:{m['color']};border-radius:4px;"></div>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:11px;color:#4d7a4d;">
-                <span>RMSE <b style="color:#e2efe2;">€{m['rmse']:.1f}M</b></span>
-                <span>MAE <b style="color:#e2efe2;">€{m['mae']:.1f}M</b></span>
-                <span>Records <b style="color:#e2efe2;">{m['n']}</b></span>
+                <span>RMSE <b style="color:#d4e8d4;">€{m['rmse']:.1f}M</b></span>
+                <span>MAE <b style="color:#d4e8d4;">€{m['mae']:.1f}M</b></span>
+                <span>Records <b style="color:#d4e8d4;">{m['n']}</b></span>
               </div>
             </div>""",unsafe_allow_html=True)
 
@@ -468,13 +468,13 @@ def page_home(preds,full):
              border-radius:12px;padding:14px 20px;margin-bottom:8px;">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
             <div style="display:flex;align-items:center;gap:10px;">
-              <span style="font-weight:700;font-size:15px;color:#e2efe2;">{r["player"]}</span>
+              <span style="font-weight:700;font-size:15px;color:#d4e8d4;">{r["player"]}</span>
               <span style="color:#4d7a4d;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
               <span style="background:{color}22;color:{color};font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;">{r["position"][:3].upper()}</span>
               <span style="background:#1a2e1a;color:#4d7a4d;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
             </div>
             <div style="display:flex;align-items:center;gap:12px;">
-              <span style="color:#4d7a4d;font-size:12px;">Market <b style="color:#e2efe2;">{fmt(r["market_value_in_eur"]/1e6)}</b></span>
+              <span style="color:#4d7a4d;font-size:12px;">Market <b style="color:#d4e8d4;">{fmt(r["market_value_in_eur"]/1e6)}</b></span>
               <span style="color:#2a4a2a;">→</span>
               <span style="color:#4d7a4d;font-size:12px;">Model <b style="color:{color};">{fmt(r["predicted_value"]/1e6)}</b></span>
               <span style="background:rgba(255,80,80,0.12);color:#ff5050;font-weight:700;padding:4px 12px;border-radius:8px;font-size:13px;">
@@ -538,7 +538,7 @@ def page_undervalued(preds,full,models):
         st.markdown(f"""<div style="background:#0d160d;border:1px solid #1a2e1a;border-left:4px solid {color};border-radius:14px;padding:16px 22px;margin-bottom:10px;">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-      <span style="font-weight:700;font-size:16px;color:#e2efe2;">{r["player"]}</span>
+      <span style="font-weight:700;font-size:16px;color:#d4e8d4;">{r["player"]}</span>
       <span style="color:#4d7a4d;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
       <span style="background:{color}22;color:{color};font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;">{pos_short}</span>
       <span style="background:#1a2e1a;color:#4d7a4d;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
@@ -551,7 +551,7 @@ def page_undervalued(preds,full,models):
   <div style="margin-top:12px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;">
     <div>
       <div style="color:#4d7a4d;font-size:9px;text-transform:uppercase;margin-bottom:2px;">Market Value</div>
-      <div style="font-size:15px;font-weight:700;color:#e2efe2;">{fmt(mv)}</div>
+      <div style="font-size:15px;font-weight:700;color:#d4e8d4;">{fmt(mv)}</div>
     </div>
     <div style="color:#1a2e1a;font-size:18px;">→</div>
     <div>
@@ -585,12 +585,12 @@ def page_perf(preds,full):
     fig_r2=go.Figure()
     fig_r2.add_trace(go.Bar(x=positions,y=r2v,marker_color=colors,marker_line_width=0,
         text=[f"{v:.4f}" for v in r2v],textposition="outside",
-        textfont=dict(size=14,family="Bebas Neue",color="#e2efe2"),
+        textfont=dict(size=14,family="Bebas Neue",color="#d4e8d4"),
         hovertemplate="<b>%{x}</b><br>R² = %{y:.4f}<extra></extra>"))
     fig_r2.update_layout(**PL,height=340,
-        title=dict(text="Test R² Score by Position",font=dict(size=15,color="#e2efe2")),
-        xaxis=dict(showgrid=False,tickfont=dict(size=14,color="#e2efe2")),
-        yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,1.05],tickfont=dict(color="#e2efe2"),title="R²"))
+        title=dict(text="Test R² Score by Position",font=dict(size=15,color="#d4e8d4")),
+        xaxis=dict(showgrid=False,tickfont=dict(size=14,color="#d4e8d4")),
+        yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,1.05],tickfont=dict(color="#d4e8d4"),title="R²"))
     st.plotly_chart(fig_r2,use_container_width=True)
 
     # RMSE + MAE side by side
@@ -598,35 +598,35 @@ def page_perf(preds,full):
     with c1:
         fig_rmse=go.Figure()
         fig_rmse.add_trace(go.Bar(x=positions,y=rmse_v,marker_color=colors,marker_line_width=0,
-            text=[f"€{v:.1f}M" for v in rmse_v],textposition="outside",textfont=dict(size=13,color="#e2efe2"),
+            text=[f"€{v:.1f}M" for v in rmse_v],textposition="outside",textfont=dict(size=13,color="#d4e8d4"),
             hovertemplate="<b>%{x}</b><br>RMSE = €%{y:.2f}M<extra></extra>"))
         fig_rmse.update_layout(**PL,height=320,
-            title=dict(text="RMSE — Root Mean Squared Error",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
-            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(rmse_v)*1.35],tickfont=dict(color="#e2efe2"),title="€M"))
+            title=dict(text="RMSE — Root Mean Squared Error",font=dict(size=13,color="#d4e8d4")),
+            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#d4e8d4")),
+            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(rmse_v)*1.35],tickfont=dict(color="#d4e8d4"),title="€M"))
         st.plotly_chart(fig_rmse,use_container_width=True)
     with c2:
         fig_mae=go.Figure()
         fig_mae.add_trace(go.Bar(x=positions,y=mae_v,marker_color=colors,marker_line_width=0,
-            text=[f"€{v:.1f}M" for v in mae_v],textposition="outside",textfont=dict(size=13,color="#e2efe2"),
+            text=[f"€{v:.1f}M" for v in mae_v],textposition="outside",textfont=dict(size=13,color="#d4e8d4"),
             hovertemplate="<b>%{x}</b><br>MAE = €%{y:.2f}M<extra></extra>"))
         fig_mae.update_layout(**PL,height=320,
-            title=dict(text="MAE — Mean Absolute Error",font=dict(size=13,color="#e2efe2")),
-            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
-            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(mae_v)*1.35],tickfont=dict(color="#e2efe2"),title="€M"))
+            title=dict(text="MAE — Mean Absolute Error",font=dict(size=13,color="#d4e8d4")),
+            xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#d4e8d4")),
+            yaxis=dict(showgrid=True,gridcolor="#152015",range=[0,max(mae_v)*1.35],tickfont=dict(color="#d4e8d4"),title="€M"))
         st.plotly_chart(fig_mae,use_container_width=True)
 
     # Grouped RMSE vs MAE
     fig_cmp=go.Figure()
     fig_cmp.add_trace(go.Bar(name="RMSE",x=positions,y=rmse_v,marker_color="#00ff87",
-        text=[f"€{v:.1f}M" for v in rmse_v],textposition="outside",textfont=dict(size=12,color="#e2efe2")))
+        text=[f"€{v:.1f}M" for v in rmse_v],textposition="outside",textfont=dict(size=12,color="#d4e8d4")))
     fig_cmp.add_trace(go.Bar(name="MAE",x=positions,y=mae_v,marker_color="#00d4ff",
-        text=[f"€{v:.1f}M" for v in mae_v],textposition="outside",textfont=dict(size=12,color="#e2efe2")))
+        text=[f"€{v:.1f}M" for v in mae_v],textposition="outside",textfont=dict(size=12,color="#d4e8d4")))
     fig_cmp.update_layout(**PL,height=340,barmode="group",
-        title=dict(text="RMSE vs MAE — Prediction Error Comparison by Position",font=dict(size=13,color="#e2efe2")),
-        xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#e2efe2")),
-        yaxis=dict(showgrid=True,gridcolor="#152015",title="€M",tickfont=dict(color="#e2efe2"),range=[0,max(rmse_v)*1.35]),
-        legend=dict(bgcolor="#0d160d",bordercolor="#1a2e1a",borderwidth=1,font=dict(color="#e2efe2")))
+        title=dict(text="RMSE vs MAE — Prediction Error Comparison by Position",font=dict(size=13,color="#d4e8d4")),
+        xaxis=dict(showgrid=False,tickfont=dict(size=13,color="#d4e8d4")),
+        yaxis=dict(showgrid=True,gridcolor="#152015",title="€M",tickfont=dict(color="#d4e8d4"),range=[0,max(rmse_v)*1.35]),
+        legend=dict(bgcolor="#0d160d",bordercolor="#1a2e1a",borderwidth=1,font=dict(color="#d4e8d4")))
     st.plotly_chart(fig_cmp,use_container_width=True)
 
     # Overfitting gap + dataset size
@@ -637,13 +637,13 @@ def page_perf(preds,full):
         labels=positions, values=n_v,
         marker=dict(colors=colors, line=dict(color="#080c08", width=2)),
         textinfo="percent+value",
-        textfont=dict(size=13, color="#e2efe2"),
+        textfont=dict(size=13, color="#d4e8d4"),
         hole=0.4,
         hovertemplate="<b>%{label}</b><br>%{value} records<br>%{percent}<extra></extra>"))
     fig_pie.update_layout(**PL, height=400,
-        title=dict(text="Training Records by Position", font=dict(size=13, color="#e2efe2")),
-        legend=dict(bgcolor="#0d160d", bordercolor="#1a2e1a", borderwidth=1, font=dict(color="#e2efe2")),
-        annotations=[dict(text="1,275<br>total", x=0.5, y=0.5, font=dict(size=14, color="#e2efe2"), showarrow=False)])
+        title=dict(text="Training Records by Position", font=dict(size=13, color="#d4e8d4")),
+        legend=dict(bgcolor="#0d160d", bordercolor="#1a2e1a", borderwidth=1, font=dict(color="#d4e8d4")),
+        annotations=[dict(text="1,275<br>total", x=0.5, y=0.5, font=dict(size=14, color="#d4e8d4"), showarrow=False)])
     st.plotly_chart(fig_pie, use_container_width=True)
 
 
@@ -677,10 +677,10 @@ def page_perf(preds,full):
         text=df_over["player"].tolist() if "player" in df_over.columns else [],
         hovertemplate="<b>%{text}</b><br>Market: €%{x:.1f}M<br>Predicted: €%{y:.1f}M<extra></extra>"))
     fig_s.update_layout(**PL,height=500,
-        xaxis=dict(title="Actual Market Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#e2efe2")),
-        yaxis=dict(title="Model Predicted Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#e2efe2")),
-        legend=dict(bgcolor="#0d160d",bordercolor="#1a2e1a",borderwidth=1,font=dict(color="#e2efe2",size=11)),
-        title=dict(text=f"{pos_sel} — Actual vs Predicted · 🟢 Undervalued · 🔴 Overvalued",font=dict(size=13,color="#e2efe2")))
+        xaxis=dict(title="Actual Market Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#d4e8d4")),
+        yaxis=dict(title="Model Predicted Value (€M)",showgrid=True,gridcolor="#152015",tickfont=dict(color="#d4e8d4")),
+        legend=dict(bgcolor="#0d160d",bordercolor="#1a2e1a",borderwidth=1,font=dict(color="#d4e8d4",size=11)),
+        title=dict(text=f"{pos_sel} — Actual vs Predicted · 🟢 Undervalued · 🔴 Overvalued",font=dict(size=13,color="#d4e8d4")))
     st.plotly_chart(fig_s,use_container_width=True)
 
     # Full metrics table
@@ -690,7 +690,7 @@ def page_perf(preds,full):
            "Seed":m["seed"],"Records":m["n"]} for p,m in META.items()]
     df_results=pd.DataFrame(rows)
     st.markdown(df_results.to_html(index=False,classes="",border=0).replace(
-        "<table","<table style='width:100%;color:#c8d8c8;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
+        "<table","<table style='width:100%;color:#d4e8d4;background:#080c08;border-collapse:collapse;font-size:13px;'").replace(
         "<th","<th style='background:#0d160d;color:#4d7a4d;padding:10px;text-align:left;border-bottom:1px solid #1a2e1a;text-transform:uppercase;font-size:11px;letter-spacing:1px;'").replace(
         "<td","<td style='padding:10px;border-bottom:1px solid #0f1f0f;'"),
     unsafe_allow_html=True)
@@ -772,7 +772,7 @@ def page_lookup(full,models):
         html=html.replace("<table","<table style='width:100%;border-collapse:collapse;font-size:13px;font-family:DM Sans,sans-serif;'")
         html=html.replace("<th","<th style='background:#0d1f0d;color:#00ff87;padding:12px 16px;text-align:left;border-bottom:2px solid #00ff87;border-right:1px solid #1a2e1a;text-transform:uppercase;font-size:10px;letter-spacing:1.5px;'")
         html=html.replace("<tr>","<tr style='border-bottom:1px solid #1a2e1a;'>")
-        html=html.replace("<td","<td style='padding:11px 16px;color:#e2efe2;border-right:1px solid #1a2e1a;background:#080c08;'")
+        html=html.replace("<td","<td style='padding:11px 16px;color:#d4e8d4;border-right:1px solid #1a2e1a;background:#080c08;'")
         # Highlight negative gap in red, positive in green
         import re
         def color_gap(m):
@@ -782,7 +782,7 @@ def page_lookup(full,models):
                 color="#ff5050" if num<0 else "#00ff87"
                 return f"<td style='padding:11px 16px;color:{color};font-weight:700;border-right:1px solid #1a2e1a;background:#080c08;'>{val}</td>"
             except: return m.group(0)
-        html=re.sub(r"<td style='padding:11px 16px;color:#e2efe2;border-right:1px solid #1a2e1a;background:#080c08;'>(-?[\d.]+)</td>(?=\s*</tr>)",color_gap,html)
+        html=re.sub(r"<td style='padding:11px 16px;color:#d4e8d4;border-right:1px solid #1a2e1a;background:#080c08;'>(-?[\d.]+)</td>(?=\s*</tr>)",color_gap,html)
         st.markdown(f"<div style='border:1px solid #1a2e1a;border-radius:12px;overflow:hidden;'>{html}</div>",unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
