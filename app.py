@@ -404,11 +404,8 @@ def sidebar():
         </div>""",unsafe_allow_html=True)
         st.markdown("<br>",unsafe_allow_html=True)
         if st.button("Logout",use_container_width=True):
-            st.session_state.logged_in=False
-            st.session_state.username=""
-            st.session_state.auth_mode="login"
-            st.query_params.clear()
-            st.switch_page("app.py")
+            st.session_state.clear()
+            st.rerun()
     return page
 
 # ══════════════════════════════════════════════════════════════
