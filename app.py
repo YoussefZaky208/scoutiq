@@ -127,7 +127,7 @@ for k,v in [("logged_in",False),("username",""),("auth_mode","login")]:
 # Restore login from cookie
 try:
     cookie_manager = stx.CookieManager()
-    cookie_user = cookie_manager.get("scoutvision_user")
+    cookie_user = None
     if cookie_user and not st.session_state.logged_in:
         st.session_state.logged_in = True
         st.session_state.username = cookie_user
