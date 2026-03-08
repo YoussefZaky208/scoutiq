@@ -157,7 +157,7 @@ def auth_page():
                 if r:
                     st.session_state.logged_in=True
                     st.session_state.username=r
-                    try: cookie_manager.set("scoutvision_user", r, max_age=86400)
+                    try: # cookie_manager.set("scoutvision_user", r, max_age=86400)
                     except: pass
                     st.rerun()
                 else: st.error("Invalid credentials.")
@@ -408,10 +408,6 @@ def sidebar():
             st.session_state.logged_in=False
             st.session_state.username=""
             st.query_params.clear()
-            st.session_state["force_logout"]=True
-            st.session_state["just_logged_out"]=True
-            try: cookie_manager.delete("scoutvision_user")
-            except: pass
             st.rerun()
     return page
 
