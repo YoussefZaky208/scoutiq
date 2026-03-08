@@ -52,6 +52,10 @@ div[data-testid="stDataFrame"] canvas{filter:invert(0)!important;}
 ::-webkit-scrollbar-track{background:#080c08;}
 ::-webkit-scrollbar-thumb{background:#1a2e1a;border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:#00ff87;}
+div[data-testid="stNumberInput"]{background:#060e06!important;}
+div[data-testid="stNumberInput"] div{background:#060e06!important;}
+div[data-testid="stNumberInput"] input{background:#060e06!important;color:#a0b8a0!important;border-color:#1a2e1a!important;}
+div[data-testid="stNumberInput"] button{background:#060e06!important;border-color:#1a2e1a!important;}
 .stSelectbox label{color:#d4e8d4!important;}
 .stSelectbox label p{color:#d4e8d4!important;}
 .stNumberInput label{color:#d4e8d4!important;}
