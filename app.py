@@ -1018,19 +1018,7 @@ def main():
     preds,full=load_all_data()
     models=load_models()
     page=sidebar()
-    if st.sidebar.toggle("☀️ Light Mode", key="light_mode_toggle"):
-        st.markdown("""<style>
-        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,[data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#ffffff!important;color:#111111!important;}
-        section[data-testid="stSidebar"]{background-color:#f5f5f5!important;}
-        section[data-testid="stSidebar"] *{color:#111111!important;}
-        div[data-testid="stMarkdownContainer"] *{color:#111111!important;}
-        h1,h2,h3,h4,h5,h6,p,span,label{color:#111111!important;}
-        div[style*="background:#0"]{background:#f0f0f0!important;}
-        div[style*="background-color:#0"]{background-color:#f0f0f0!important;}
-        .stNumberInput>div>div>input,.stTextInput>div>div>input{background:#ffffff!important;color:#111111!important;border-color:#aaaaaa!important;}
-        div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#111111!important;}
-        div[data-baseweb="select"] *{background:#ffffff!important;color:#111111!important;}
-        </style>""", unsafe_allow_html=True)
+
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
     if st.session_state.current_page != page:
