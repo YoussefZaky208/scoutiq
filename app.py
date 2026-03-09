@@ -1020,45 +1020,16 @@ def main():
     page=sidebar()
     if st.sidebar.toggle("☀️ Light Mode", key="light_mode_toggle"):
         st.markdown("""<style>
-        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,
-        [data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#ffffff!important;color:#111111!important;}
+        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,[data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#ffffff!important;color:#111111!important;}
         section[data-testid="stSidebar"]{background-color:#f5f5f5!important;}
         section[data-testid="stSidebar"] *{color:#111111!important;}
         div[data-testid="stMarkdownContainer"] *{color:#111111!important;}
         h1,h2,h3,h4,h5,h6,p,span,label{color:#111111!important;}
-        /* Override ALL dark background divs */
-        div[style*="background:#0"]{background:#f9f9f9!important;}
-        div[style*="background: #0"]{background:#f9f9f9!important;}
-        div[style*="background-color:#0"]{background-color:#f9f9f9!important;}
-        div[style*="color:#"]{color:#111111!important;}
-        /* Card overrides */
-        [class*="card"],div[style*="border-radius"]{background:#f0f0f0!important;border-color:#dddddd!important;}
-        /* Input fields */
+        div[style*="background:#0"]{background:#f0f0f0!important;}
+        div[style*="background-color:#0"]{background-color:#f0f0f0!important;}
         .stNumberInput>div>div>input,.stTextInput>div>div>input{background:#ffffff!important;color:#111111!important;border-color:#aaaaaa!important;}
         div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#111111!important;}
         div[data-baseweb="select"] *{background:#ffffff!important;color:#111111!important;}
-        /* Keep green accents */
-        [style*="color:#00ff87"]{color:#00aa55!important;}
-        [style*="color: #00ff87"]{color:#00aa55!important;}
-        </style>""", unsafe_allow_html=True)
-        section[data-testid="stSidebar"]{background-color:#dcedc8!important;}
-        section[data-testid="stSidebar"] *{color:#1a1a1a!important;}
-        div[data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
-        div[data-testid="stMarkdownContainer"] *{color:#1a1a1a!important;}
-        h1,h2,h3,h4,h5,h6,p,span,label{color:#1a1a1a!important;}
-        .stNumberInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;border-color:#4caf50!important;}
-        div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#1a1a1a!important;}
-        .stSelectbox div{color:#1a1a1a!important;}
-        div[data-baseweb="select"] *{background:#ffffff!important;color:#1a1a1a!important;}
-        .stTextInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;}
-        div[data-testid="stForm"]{background:#ffffff!important;}
-        [class*="card"]{background:#ffffff!important;color:#1a1a1a!important;}
-        div[style*="background:#0d1a0d"]{background:#e8f5e9!important;}
-        div[style*="background:#0a120a"]{background:#f1f8f1!important;}
-        div[style*="background:#080c08"]{background:#f5faf5!important;}
-        div[style*="background:#111d11"]{background:#e8f5e9!important;}
-        div[style*="color:#d4e8d4"]{color:#1a1a1a!important;}
-        div[style*="color:#a0b8a0"]{color:#2a5a2a!important;}
         </style>""", unsafe_allow_html=True)
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
