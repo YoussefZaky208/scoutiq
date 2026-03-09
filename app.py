@@ -1018,6 +1018,18 @@ def main():
     preds,full=load_all_data()
     models=load_models()
     page=sidebar()
+    if st.sidebar.toggle("☀️ Light Mode", key="light_mode_toggle"):
+        st.markdown("""<style>
+        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
+        section[data-testid="stSidebar"]{background-color:#e8f5e9!important;}
+        section[data-testid="stSidebar"] *{color:#1a1a1a!important;}
+        [data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
+        h1,h2,h3,h4,h5,h6{color:#1a1a1a!important;}
+        .stNumberInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;}
+        div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#1a1a1a!important;}
+        .stSelectbox div{color:#1a1a1a!important;}
+        label{color:#1a1a1a!important;}
+        </style>""", unsafe_allow_html=True)
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
     if st.session_state.current_page != page:
