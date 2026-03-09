@@ -154,6 +154,22 @@ def auth_page():
       <defs><radialGradient id="bg2" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
     </svg>
   </div>
+</div><div style="display:flex;justify-content:center;margin-bottom:16px;">
+  <div style="width:80px;height:80px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%, #1a2e1a, #080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(0,255,135,0.4);">
+    <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#e8e8e8"/>
+      <circle cx="50" cy="50" r="46" fill="url(#bg2)"/>
+      <polygon points="50,20 62,29 57,43 43,43 38,29" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="50,80 62,71 57,57 43,57 38,71" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="20,38 30,28 42,34 40,48 26,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="80,38 70,28 58,34 60,48 74,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="24,62 30,72 44,68 46,54 30,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="76,62 70,72 56,68 54,54 70,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-30 38 34)"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#00ff87" stroke-width="2.5"/>
+      <defs><radialGradient id="bg2" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
+    </svg>
+  </div>
 </div><div style="font-family:'Bebas Neue',sans-serif;font-size:54px;color:#00ff87;letter-spacing:6px;line-height:1;margin-bottom:10px;">ScoutVision</div>
           <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
         """,unsafe_allow_html=True)
