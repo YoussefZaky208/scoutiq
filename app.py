@@ -391,25 +391,13 @@ def run_predictions(full,models,pos_filter="All",season_filter="All"):
 # ── SIDEBAR ───────────────────────────────────────────────────
 def sidebar():
     with st.sidebar:
-        st.markdown("""<div style="padding-bottom:20px;border-bottom:1px solid #1a2e1a;margin-bottom:20px;text-align:center;"><div style="display:flex;justify-content:center;margin-bottom:12px;"><div style="width:65px;height:65px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%,#1a2e1a,#080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,255,135,0.3);font-size:34px;">⚽</div></div>
-    <svg width="46" height="46" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="46" fill="#e8e8e8"/>
-      <circle cx="50" cy="50" r="46" fill="url(#bg1)"/>
-      <polygon points="50,20 62,29 57,43 43,43 38,29" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <polygon points="50,80 62,71 57,57 43,57 38,71" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <polygon points="20,38 30,28 42,34 40,48 26,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <polygon points="80,38 70,28 58,34 60,48 74,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <polygon points="24,62 30,72 44,68 46,54 30,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <polygon points="76,62 70,72 56,68 54,54 70,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
-      <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-30 38 34)"/>
-      <circle cx="50" cy="50" r="46" fill="none" stroke="#00ff87" stroke-width="2.5"/>
-      <defs><radialGradient id="bg1" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
-    </svg>
+        st.markdown("""<div style="padding:20px 0 20px 0;border-bottom:1px solid #1a2e1a;margin-bottom:20px;text-align:center;">
+  <div style="display:flex;justify-content:center;margin-bottom:10px;">
+    <div style="width:65px;height:65px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%,#1a2e1a,#080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,255,135,0.3);font-size:34px;">⚽</div>
   </div>
-</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#00ff87;letter-spacing:3px;">ScoutVision</div>
-          <div style="color:#3d603d;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;line-height:1.6;">Turning performance data into<br>transfer market intelligence</div>
-        </div>""",unsafe_allow_html=True)
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#00ff87;letter-spacing:4px;line-height:1.1;">ScoutVision</div>
+  <div style="color:#a0b8a0;font-size:8px;text-transform:uppercase;letter-spacing:2px;margin-top:4px;">Transfer Market Intelligence</div>
+</div>""",unsafe_allow_html=True)
         page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
                            "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
         st.markdown("<br><br><br>",unsafe_allow_html=True)
