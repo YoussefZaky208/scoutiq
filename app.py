@@ -400,7 +400,7 @@ def sidebar():
 </div>""",unsafe_allow_html=True)
         if "light_mode" not in st.session_state:
             st.session_state.light_mode = False
-        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode)
+        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode, key="lm_toggle")
         if st.session_state.light_mode:
             st.markdown("""<style>
             html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
@@ -416,7 +416,7 @@ def sidebar():
         st.markdown("---")
         if "light_mode" not in st.session_state:
             st.session_state.light_mode = False
-        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode)
+        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode, key="lm_toggle")
         if st.session_state.light_mode:
             st.markdown("""<style>
             html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
