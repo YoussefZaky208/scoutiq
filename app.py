@@ -1021,7 +1021,26 @@ def main():
     if st.sidebar.toggle("☀️ Light Mode", key="light_mode_toggle"):
         st.markdown("""<style>
         html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,
-        [data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#f0f4f0!important;color:#1a1a1a!important;}
+        [data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#ffffff!important;color:#111111!important;}
+        section[data-testid="stSidebar"]{background-color:#f5f5f5!important;}
+        section[data-testid="stSidebar"] *{color:#111111!important;}
+        div[data-testid="stMarkdownContainer"] *{color:#111111!important;}
+        h1,h2,h3,h4,h5,h6,p,span,label{color:#111111!important;}
+        /* Override ALL dark background divs */
+        div[style*="background:#0"]{background:#f9f9f9!important;}
+        div[style*="background: #0"]{background:#f9f9f9!important;}
+        div[style*="background-color:#0"]{background-color:#f9f9f9!important;}
+        div[style*="color:#"]{color:#111111!important;}
+        /* Card overrides */
+        [class*="card"],div[style*="border-radius"]{background:#f0f0f0!important;border-color:#dddddd!important;}
+        /* Input fields */
+        .stNumberInput>div>div>input,.stTextInput>div>div>input{background:#ffffff!important;color:#111111!important;border-color:#aaaaaa!important;}
+        div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#111111!important;}
+        div[data-baseweb="select"] *{background:#ffffff!important;color:#111111!important;}
+        /* Keep green accents */
+        [style*="color:#00ff87"]{color:#00aa55!important;}
+        [style*="color: #00ff87"]{color:#00aa55!important;}
+        </style>""", unsafe_allow_html=True)
         section[data-testid="stSidebar"]{background-color:#dcedc8!important;}
         section[data-testid="stSidebar"] *{color:#1a1a1a!important;}
         div[data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
