@@ -138,7 +138,409 @@ def auth_page():
     with col:
         st.markdown("<br><br>",unsafe_allow_html=True)
         st.markdown("""<div class="card" style="text-align:center;padding:44px 36px;color:#ffffff!important;">
-          """,unsafe_allow_html=True)
+          <div style="display:flex;justify-content:center;margin-bottom:16px;">
+  <div style="width:80px;height:80px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%, #1a2e1a, #080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(0,255,135,0.4);">
+    <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#e8e8e8"/>
+      <circle cx="50" cy="50" r="46" fill="url(#bg2)"/>
+      <polygon points="50,20 62,29 57,43 43,43 38,29" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="50,80 62,71 57,57 43,57 38,71" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="20,38 30,28 42,34 40,48 26,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="80,38 70,28 58,34 60,48 74,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="24,62 30,72 44,68 46,54 30,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="76,62 70,72 56,68 54,54 70,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-30 38 34)"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#00ff87" stroke-width="2.5"/>
+      <defs><radialGradient id="bg2" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
+    </svg>
+  </div>
+</div><div style="display:flex;justify-content:center;margin-bottom:16px;">
+  <div style="width:80px;height:80px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%, #1a2e1a, #080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(0,255,135,0.4);">
+    <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#e8e8e8"/>
+      <circle cx="50" cy="50" r="46" fill="url(#bg2)"/>
+      <polygon points="50,20 62,29 57,43 43,43 38,29" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="50,80 62,71 57,57 43,57 38,71" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="20,38 30,28 42,34 40,48 26,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="80,38 70,28 58,34 60,48 74,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="24,62 30,72 44,68 46,54 30,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="76,62 70,72 56,68 54,54 70,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-30 38 34)"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#00ff87" stroke-width="2.5"/>
+      <defs><radialGradient id="bg2" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
+    </svg>
+  </div>
+</div><div style="font-family:'Bebas Neue',sans-serif;font-size:54px;color:#00ff87;letter-spacing:6px;line-height:1;margin-bottom:10px;">ScoutVision</div>
+          <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:32px;">Turning performance data into transfer market intelligence</div>
+        """,unsafe_allow_html=True)
+        st.markdown("<style>div[data-testid='stRadio'] label{color:#ffffff!important;font-size:15px!important;}</style>",unsafe_allow_html=True)
+        mode=st.radio("",["Sign In","Create Account"],horizontal=True,
+                      index=0 if st.session_state.auth_mode=="login" else 1,
+                      label_visibility="collapsed")
+        if mode=="Sign In":
+            st.session_state.auth_mode="login"
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Username or Email</p>",unsafe_allow_html=True)
+            u=st.text_input("",key="li_u",placeholder="Enter username or email",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Password</p>",unsafe_allow_html=True)
+            p=st.text_input("",type="password",key="li_p",placeholder="Enter password",label_visibility="collapsed")
+            st.markdown("<br>",unsafe_allow_html=True)
+            if st.button("SIGN IN →",use_container_width=True):
+                r=login_user(u,p)
+                if r:
+                    st.session_state.logged_in=True
+                    st.session_state.username=r
+                    pass # cookie disabled
+                    st.rerun()
+                else: st.error("Invalid credentials.")
+        else:
+            st.session_state.auth_mode="register"
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Username</p>",unsafe_allow_html=True)
+            u=st.text_input("",key="rg_u",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Email</p>",unsafe_allow_html=True)
+            e=st.text_input("",key="rg_e",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Password</p>",unsafe_allow_html=True)
+            p=st.text_input("",type="password",key="rg_p",label_visibility="collapsed")
+            st.markdown("<p style='color:#ffffff;font-size:14px;margin-bottom:4px;'>Confirm Password</p>",unsafe_allow_html=True)
+            c=st.text_input("",type="password",key="rg_c",label_visibility="collapsed")
+            st.markdown("<br>",unsafe_allow_html=True)
+            if st.button("CREATE ACCOUNT →",use_container_width=True):
+                if not u or not e or not p: st.error("All fields required.")
+                elif len(p)<6: st.error("Password must be 6+ characters.")
+                elif p!=c: st.error("Passwords do not match.")
+                else:
+                    ok,msg=register_user(u,e,p)
+                    if ok: st.success(msg+" Please sign in."); st.session_state.auth_mode="login"; st.rerun()
+                    else: st.error(msg)
+        st.markdown("</div>",unsafe_allow_html=True)
+
+# ── DATA ──────────────────────────────────────────────────────
+@st.cache_data
+def load_all_data():
+    preds,full={},{}
+    for pos in ["attackers","midfielders","defenders","goalkeepers"]:
+        df=pd.read_csv(PROJECT_PATH+f"{pos}_predictions.csv")
+        df["position"]=pos.capitalize()
+        # Add season_label if missing
+        if "season_label" not in df.columns:
+            try:
+                pt=pd.read_csv(PROJECT_PATH+f"{pos.upper()}_PRETRAIN.csv")
+                sl_map=pt.groupby("player")["season_label"].last().to_dict()
+                df["season_label"]=df["player"].map(sl_map).fillna("")
+            except: df["season_label"]=""
+        preds[pos]=df
+    for pos in ["attackers","midfielders","defenders","goalkeepers"]:
+        df=pd.read_csv(PROJECT_PATH+f"{pos.upper()}_PRETRAIN.csv")
+        df["position"]=pos.capitalize()
+        if "market_value_in_eur" not in df.columns: df["market_value_in_eur"]=0
+        if "predicted_value" not in df.columns: df["predicted_value"]=0
+        full[pos]=df
+    return preds,full
+
+@st.cache_resource
+def load_models():
+    out={}
+    for pos in ["attackers","midfielders","defenders","goalkeepers"]:
+        out[pos]={
+            "model":    joblib.load(PROJECT_PATH+f"{pos}_model.pkl"),
+            "imputer":  joblib.load(PROJECT_PATH+f"{pos}_imputer.pkl"),
+            "selector": joblib.load(PROJECT_PATH+f"{pos}_selector.pkl"),
+            "features": joblib.load(PROJECT_PATH+f"{pos}_features.pkl"),
+            "squad_map":joblib.load(PROJECT_PATH+f"{pos}_squad_map.pkl"),
+            "nation_map":joblib.load(PROJECT_PATH+f"{pos}_nation_map.pkl"),
+        }
+    return out
+
+def n(df,col,default=0):
+    if col in df.columns:
+        return pd.to_numeric(df[col].astype(str).str.replace("%","",regex=False),errors="coerce").fillna(default)
+    return pd.Series(default,index=df.index,dtype=float)
+
+def fe(df,pos,squad_map,nation_map):
+    d=df.copy()
+    meta={"player","squad","nation","season","season_label","pos","pos_primary","position"}
+    for c in d.columns:
+        if c not in meta:
+            d[c]=pd.to_numeric(d[c].astype(str).str.replace("%","",regex=False),errors="coerce")
+    age=n(d,"age",25); mins=n(d,"Minutes_total",0)
+    mp=n(d,"Matches Played",1).replace(0,1); m90=mins/90+1e-5
+    d["age_squared"]=age**2; d["min_per_match"]=mins/mp
+    d["total_minutes"]=mins; d["age_x_minutes"]=age*mins
+    d["top6_flag"]=d["squad"].isin(TOP6).astype(float)
+    gm=np.mean(list(squad_map.values()))
+    d["squad_target_enc"]=d["squad"].map(squad_map).fillna(gm)
+    d["nation_encoded"]=d["nation"].map(nation_map).fillna(-1) if "nation" in d.columns else -1.0
+    if "season" in d.columns:
+        d["season_start_year"]=d["season"].astype(str).str[:4].apply(lambda x:float(x) if x.isdigit() else 2022.0)
+    else:
+        d["season_start_year"]=2022.0
+
+    if pos=="attackers":
+        peak=26; d["age_from_peak"]=(age-peak).abs(); d["prime_age"]=((age>=23)&(age<=28)).astype(float); afp=d["age_from_peak"]
+        goals=n(d,"Goals"); assts=n(d,"Assists"); xg=n(d,"Expected Goals"); npg=n(d,"Non Penalty Goals")
+        shots=n(d,"Total Shots"); pp=n(d,"Progressive Passes"); pc=n(d,"Progressive Carries")
+        kp=n(d,"Key passes"); pia=n(d,"Passes into penalty area"); pl=n(d,"Possessions lost")
+        err=n(d,"Errors made"); sca=n(d,"Shot creating actions p 90"); gca=n(d,"Goal creating actions p 90")
+        sot=n(d,"% Shots on target"); pks=n(d,"Penalty Kicks Made"); expnpg=n(d,"Exp NPG")
+        third=n(d,"1/3"); gps=n(d,"Goals per shot"); gpst=n(d,"Goals per shot on target")
+        sp90=n(d,"Shots p 90"); gp90=n(d,"Goals p 90"); ap90=n(d,"Assists p 90")
+        gc=goals+assts; gcp=gc/m90
+        d["Penalty Kicks Made"]=pks; d["Exp NPG"]=expnpg; d["1/3"]=third
+        d["Goals per shot"]=gps; d["Goals per shot on target"]=gpst
+        d["Shots p 90"]=sp90; d["Goals p 90"]=gp90; d["Assists p 90"]=ap90
+        d["Shot creating actions p 90"]=sca; d["Goal creating actions p 90"]=gca
+        d["% Shots on target"]=sot; d["Goals & Assists"]=gc
+        d["goals_per90"]=goals/m90; d["assists_per90"]=assts/m90; d["shots_per90"]=shots/m90
+        d["xg_per90"]=xg/m90; d["npg_per90"]=npg/m90; d["sca_per90"]=sca/m90; d["gca_per90"]=gca/m90
+        d["prog_carries_per90"]=pc/m90; d["prog_passes_per90"]=pp/m90; d["key_passes_per90"]=kp/m90
+        d["pen_area_per90"]=pia/m90; d["conversion_rate"]=goals/(shots+1e-5)
+        d["shot_on_tgt_rate"]=sot/100; d["xg_diff"]=goals-xg; d["npxg_diff"]=npg-expnpg
+        d["goal_contributions"]=gc; d["gc_per90"]=gcp; d["prog_actions"]=pp+pc
+        d["prog_actions_per90"]=(pp+pc)/m90; d["age_x_gc_per90"]=age*gcp
+        d["age_x_xg_per90"]=age*(xg/m90); d["age_x_prog_per90"]=age*(d["prog_actions"]/m90)
+        d["goals_x_sca"]=(goals/m90)*sca; d["gc_x_prog"]=gcp*(d["prog_actions"]/m90)
+        d["xg_x_conversion"]=(xg/m90)*d["conversion_rate"]; d["season_x_gc"]=d["season_start_year"]*gcp
+        d["prime_x_gc"]=d["prime_age"]*gcp; d["xg_x_prog"]=(xg/m90)*(d["prog_actions"]/m90)
+        d["squad_x_age"]=d["squad_target_enc"]*age; d["gc_x_season"]=gcp*d["season_start_year"]
+        d["xg_x_age_peak"]=(xg/m90)*(1/(afp+1)); d["gc_x_age_peak"]=gcp*(1/(afp+1))
+        d["goals_x_age_peak"]=(goals/m90)*(1/(afp+1)); d["sca_x_age_peak"]=sca*(1/(afp+1))
+        d["top6_x_age_peak"]=d["top6_flag"]*(1/(afp+1)); d["top6_x_gc"]=d["top6_flag"]*gcp
+
+    elif pos=="midfielders":
+        peak=26; d["age_from_peak"]=(age-peak).abs(); d["prime_age"]=((age>=23)&(age<=28)).astype(float); afp=d["age_from_peak"]
+        goals=n(d,"Goals"); assts=n(d,"Assists"); xg=n(d,"Expected Goals"); npg=n(d,"Non Penalty Goals")
+        expnpg=n(d,"Exp NPG"); pp=n(d,"Progressive Passes"); pc=n(d,"Progressive Carries")
+        kp=n(d,"Key passes"); pia=n(d,"Passes into penalty area"); sca=n(d,"Shot creating actions p 90")
+        gca=n(d,"Goal creating actions p 90"); ta=n(d,"Tackles attempted"); tw=n(d,"Tackles Won")
+        intp=n(d,"Interceptions"); clr=n(d,"Clearances"); sb=n(d,"Shots blocked")
+        pb=n(d,"Passes blocked"); pdt=n(d,"% Dribbles tackled"); pad=n(d,"% Aerial Duels won")
+        pl=n(d,"Possessions lost"); err=n(d,"Errors made"); third=n(d,"1/3")
+        gc=goals+assts; gcp=gc/m90
+        d["Exp NPG"]=expnpg; d["1/3"]=third; d["Shot creating actions p 90"]=sca
+        d["Goal creating actions p 90"]=gca; d["% Dribbles tackled"]=pdt
+        d["% Aerial Duels won"]=pad; d["Goals & Assists"]=gc
+        d["goals_per90"]=goals/m90; d["assists_per90"]=assts/m90; d["xg_per90"]=xg/m90
+        d["npg_per90"]=npg/m90; d["sca_per90"]=sca/m90; d["gca_per90"]=gca/m90
+        d["key_passes_per90"]=kp/m90; d["pen_area_per90"]=pia/m90
+        d["prog_carries_per90"]=pc/m90; d["prog_passes_per90"]=pp/m90; d["third_per90"]=third/m90
+        d["tackles_att_per90"]=ta/m90; d["tackles_won_per90"]=tw/m90
+        d["interceptions_per90"]=intp/m90; d["clearances_per90"]=clr/m90
+        d["shots_blocked_per90"]=sb/m90; d["passes_blocked_per90"]=pb/m90
+        d["tackle_success_rate"]=tw/(ta+1e-5); d["pct_dribbles_tackled"]=pdt/100
+        d["aerial_won_pct"]=pad/100; d["possessions_lost_per90"]=pl/m90; d["errors_per90"]=err/m90
+        d["goal_contributions"]=gc; d["gc_per90"]=gcp; d["xg_diff"]=goals-xg
+        d["prog_actions"]=pp+pc; d["prog_actions_per90"]=(pp+pc)/m90
+        d["box_to_box"]=gcp+tw/m90+intp/m90
+        d["top6_x_age_peak"]=d["top6_flag"]*(1/(afp+1)); d["top6_x_gc"]=d["top6_flag"]*gcp
+        d["age_x_gc_per90"]=age*gcp; d["age_x_xg_per90"]=age*(xg/m90)
+        d["age_x_prog_per90"]=age*(d["prog_actions"]/m90); d["age_x_def"]=age*((tw+intp+clr+sb)/m90)
+        d["gc_x_prog"]=gcp*(d["prog_actions"]/m90); d["sca_x_age_peak"]=sca*(1/(afp+1))
+        d["gc_x_age_peak"]=gcp*(1/(afp+1)); d["prog_x_age_peak"]=(d["prog_actions"]/m90)*(1/(afp+1))
+        d["def_x_age_peak"]=((tw+intp+clr+sb)/m90)*(1/(afp+1))
+        d["box_to_box_x_age_peak"]=d["box_to_box"]*(1/(afp+1))
+        d["season_x_gc"]=d["season_start_year"]*gcp; d["season_x_prog"]=d["season_start_year"]*(d["prog_actions"]/m90)
+        d["prime_x_gc"]=d["prime_age"]*gcp; d["prime_x_box"]=d["prime_age"]*d["box_to_box"]
+
+    elif pos=="defenders":
+        peak=27; d["age_from_peak"]=(age-peak).abs(); d["prime_age"]=((age>=24)&(age<=29)).astype(float); afp=d["age_from_peak"]
+        ta=n(d,"Tackles attempted"); tw=n(d,"Tackles Won"); pdt=n(d,"% Dribbles tackled")
+        pad=n(d,"% Aerial Duels won"); intp=n(d,"Interceptions"); clr=n(d,"Clearances")
+        sb=n(d,"Shots blocked"); pb=n(d,"Passes blocked"); pc=n(d,"Progressive Carries")
+        pp=n(d,"Progressive Passes"); third=n(d,"1/3"); pl=n(d,"Possessions lost")
+        err=n(d,"Errors made"); goals=n(d,"Goals"); assts=n(d,"Assists")
+        def_act=tw+intp+clr+sb
+        d["Goals & Assists"]=goals+assts; d["% Dribbles tackled"]=pdt; d["% Aerial Duels won"]=pad
+        d["tackles_attempted_per90"]=ta/m90; d["tackles_won_per90"]=tw/m90
+        d["interceptions_per90"]=intp/m90; d["clearances_per90"]=clr/m90
+        d["shots_blocked_per90"]=sb/m90; d["passes_blocked_per90"]=pb/m90
+        d["prog_carries_per90"]=pc/m90; d["prog_passes_per90"]=pp/m90; d["third_per90"]=third/m90
+        d["possessions_lost_per90"]=pl/m90; d["errors_per90"]=err/m90
+        d["goals_per90"]=goals/m90; d["assists_per90"]=assts/m90; d["ga_per90"]=(goals+assts)/m90
+        d["pct_dribbles_tackled"]=pdt/100; d["aerial_won_pct"]=pad/100
+        d["tackle_success_rate"]=tw/(ta+1e-5); d["def_actions_per90"]=def_act/m90
+        d["def_volume"]=def_act; d["prog_actions_per90"]=(pc+pp)/m90
+        d["age_x_def_actions"]=age*(def_act/m90); d["age_x_prog"]=age*((pc+pp)/m90)
+        d["def_x_age_peak"]=(def_act/m90)*(1/(afp+1)); d["prog_x_age_peak"]=((pc+pp)/m90)*(1/(afp+1))
+        d["aerial_x_age_peak"]=(pad/100)*(1/(afp+1)); d["tackle_x_age_peak"]=(tw/m90)*(1/(afp+1))
+        d["intercept_x_age_peak"]=(intp/m90)*(1/(afp+1)); d["prime_x_def"]=d["prime_age"]*(def_act/m90)
+        d["prime_x_prog"]=d["prime_age"]*((pc+pp)/m90); d["top6_x_age_peak"]=d["top6_flag"]*(1/(afp+1))
+        d["top6_x_def"]=d["top6_flag"]*(def_act/m90); d["top6_x_prog"]=d["top6_flag"]*((pc+pp)/m90)
+        d["season_x_def"]=d["season_start_year"]*(def_act/m90); d["season_x_prog"]=d["season_start_year"]*((pc+pp)/m90)
+        d["def_x_prog"]=(def_act/m90)*((pc+pp)/m90); d["clearance_x_aerial"]=(clr/m90)*(pad/100)
+        d["tackle_x_intercept"]=(tw/m90)*(intp/m90)
+
+    elif pos=="goalkeepers":
+        peak=28; d["age_from_peak"]=(age-peak).abs(); d["prime_age"]=((age>=25)&(age<=32)).astype(float); afp=d["age_from_peak"]
+        ga=n(d,"Goals Against"); gap90=n(d,"Goals against p 90"); sav=n(d,"Saves")
+        svpct=n(d,"Saves %"); cs=n(d,"Clean Sheets"); cspct=n(d,"% Clean sheets")
+        penpct=n(d,"% Penalty saves"); cross=n(d,"Crosses Stopped")
+        d["Saves %"]=svpct; d["% Clean sheets"]=cspct; d["% Penalty saves"]=penpct
+        d["saves_per90"]=sav/m90; d["goals_ag_per90"]=gap90; d["clean_sheets_per90"]=cs/m90
+        d["crosses_stopped_per90"]=cross/m90; d["saves_pct"]=svpct/100; d["clean_sheet_pct"]=cspct/100
+        d["penalty_save_pct"]=penpct/100; d["goals_prevented"]=d["saves_per90"]-gap90
+        d["saves_pct_x_volume"]=(svpct/100)*d["saves_per90"]; d["age_x_saves"]=age*d["saves_per90"]
+        d["age_x_clean"]=age*(cs/m90); d["saves_x_age_peak"]=d["saves_per90"]*(1/(afp+1))
+        d["clean_x_age_peak"]=(cs/m90)*(1/(afp+1)); d["saves_pct_x_age_peak"]=(svpct/100)*(1/(afp+1))
+        d["prime_x_saves"]=d["prime_age"]*d["saves_per90"]; d["prime_x_clean"]=d["prime_age"]*(cs/m90)
+        d["top6_x_age_peak"]=d["top6_flag"]*(1/(afp+1)); d["top6_x_saves"]=d["top6_flag"]*d["saves_per90"]
+        d["season_x_saves"]=d["season_start_year"]*d["saves_per90"]; d["season_x_clean"]=d["season_start_year"]*(cs/m90)
+    return d
+
+def predict_df(df_fe,pos,models):
+    import sklearn
+    from sklearn.impute import SimpleImputer
+    m=models[pos]
+    imp_cols=m["imputer"].feature_names_in_.tolist()
+    X=pd.DataFrame(index=df_fe.index)
+    for c in imp_cols:
+        X[c]=pd.to_numeric(df_fe[c],errors="coerce").fillna(0) if c in df_fe.columns else 0.0
+    X=X.fillna(0)
+    try:
+        # Refit a fresh imputer with same columns to avoid sklearn version mismatch
+        fresh_imp=SimpleImputer(strategy="mean")
+        fresh_imp.fit(X)
+        X_imp=fresh_imp.transform(X)
+        X_sel=m["selector"].transform(X_imp)
+        return m["model"].predict(X_sel)
+    except Exception as e:
+        st.error(f"Predict error ({pos}): {e}"); return np.zeros(len(df_fe))
+
+def run_predictions(full,models,pos_filter="All",season_filter="All"):
+    results=[]
+    for pos_key,df in full.items():
+        pos_cap=pos_key.capitalize()
+        if pos_filter!="All" and pos_cap!=pos_filter: continue
+        df2=df.copy()
+        if season_filter!="All": df2=df2[df2["season_label"]==season_filter]
+        if df2.empty: continue
+        m=models[pos_key]; df_fe=fe(df2,pos_key,m["squad_map"],m["nation_map"])
+        df2=df2.copy(); df2["predicted_value"]=predict_df(df_fe,pos_key,models)
+        df2["difference_eur"]=df2["market_value_in_eur"]-df2["predicted_value"]
+        df2["pos_cap"]=pos_cap
+        keep=[c for c in ["player","squad","age","season_label","market_value_in_eur","predicted_value","difference_eur","pos_cap"] if c in df2.columns]
+        results.append(df2[keep])
+    return pd.concat(results,ignore_index=True) if results else pd.DataFrame()
+
+# ── SIDEBAR ───────────────────────────────────────────────────
+def sidebar():
+    with st.sidebar:
+        st.markdown("""<div style="padding-bottom:20px;border-bottom:1px solid #1a2e1a;margin-bottom:20px;text-align:center;"><div style="display:flex;justify-content:center;margin-bottom:12px;">
+  <div style="width:70px;height:70px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%, #1a2e1a, #080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,255,135,0.3);">
+    <svg width="46" height="46" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#e8e8e8"/>
+      <circle cx="50" cy="50" r="46" fill="url(#bg1)"/>
+      <polygon points="50,20 62,29 57,43 43,43 38,29" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="50,80 62,71 57,57 43,57 38,71" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="20,38 30,28 42,34 40,48 26,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="80,38 70,28 58,34 60,48 74,50" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="24,62 30,72 44,68 46,54 30,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <polygon points="76,62 70,72 56,68 54,54 70,52" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+      <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-30 38 34)"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#00ff87" stroke-width="2.5"/>
+      <defs><radialGradient id="bg1" cx="35%" cy="35%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(0,0,0,0.2)"/></radialGradient></defs>
+    </svg>
+  </div>
+</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#00ff87;letter-spacing:3px;">ScoutVision</div>
+          <div style="color:#3d603d;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;line-height:1.6;">Turning performance data into<br>transfer market intelligence</div>
+        </div>""",unsafe_allow_html=True)
+        page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
+                           "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
+        st.markdown("<br><br><br>",unsafe_allow_html=True)
+        st.markdown(f"""<div style="border-top:1px solid #1a2e1a;padding-top:16px;">
+          <div style="color:#d4e8d4;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Logged in as</div>
+          <div style="color:#00ff87;font-weight:600;margin-top:4px;">{st.session_state.username}</div>
+        </div>""",unsafe_allow_html=True)
+        st.markdown("<br>",unsafe_allow_html=True)
+        if st.button("Logout",use_container_width=True):
+            st.session_state.clear()
+            st.rerun()
+    return page
+
+# ══════════════════════════════════════════════════════════════
+# HOME
+# ══════════════════════════════════════════════════════════════
+def page_home(preds,full):
+    st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
+    scroll_top()
+    all_pred=pd.concat(preds.values(),ignore_index=True)
+    all_full=pd.concat(full.values(),ignore_index=True)
+
+    # Hero
+    st.markdown("""<div class="card">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:3.8rem;line-height:1.05;margin-bottom:10px;">
+        Transfer Market<br><span style="color:#00ff87;">Intelligence</span>
+      </div>
+      <div style="color:#d4e8d4;font-size:14px;max-width:600px;">
+        An AI-powered framework for detecting undervalued Premier League talent using machine learning and performance analytics.
+      </div>
+    </div>""",unsafe_allow_html=True)
+
+    # Stats row
+    c1,c2,c3,c4,c5=st.columns(5)
+    for col,(num,lbl) in zip([c1,c2,c3,c4,c5],[
+        (len(all_full),"Total Records"),
+        (all_full["player"].nunique(),"Unique Players"),
+        (all_full["season_label"].nunique(),"Seasons Covered"),
+        (len(all_pred[all_pred["difference_eur"]<-2e6]),"Undervalued Found"),
+        (f"{np.mean([v['r2'] for v in META.values()]):.3f}","Avg Model R²"),
+    ]):
+        with col:
+            st.markdown(f"""<div class="stat-card">
+              <div class="stat-num">{num}</div><div class="stat-lbl">{lbl}</div>
+            </div>""",unsafe_allow_html=True)
+
+    st.markdown("<br>",unsafe_allow_html=True)
+
+    # Model overview cards
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin-bottom:14px;'>📋 Model Overview</div>",unsafe_allow_html=True)
+    cols=st.columns(4)
+    for i,(pos,m) in enumerate(META.items()):
+        with cols[i]:
+            bar_w=int(m["r2"]*100)
+            st.markdown(f"""<div class="card" style="border-top:3px solid {m['color']};">
+              <div style="font-size:26px;margin-bottom:8px;">{m['icon']}</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:#d4e8d4;">{pos}</div>
+              <div style="color:{m['color']};font-family:'Bebas Neue',sans-serif;font-size:44px;margin:4px 0;line-height:1;">{m['r2']:.4f}</div>
+              <div style="color:#d4e8d4;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Test R²</div>
+              <div style="background:#152015;border-radius:4px;height:4px;margin-bottom:12px;">
+                <div style="width:{bar_w}%;height:100%;background:{m['color']};border-radius:4px;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:#d4e8d4;">
+                <span>RMSE <b style="color:#d4e8d4;">€{m['rmse']:.1f}M</b></span>
+                <span>MAE <b style="color:#d4e8d4;">€{m['mae']:.1f}M</b></span>
+                <span>Records <b style="color:#d4e8d4;">{m['n']}</b></span>
+              </div>
+            </div>""",unsafe_allow_html=True)
+
+    st.markdown("<br>",unsafe_allow_html=True)
+
+    # Top picks — uses same preds CSVs as Undervalued tab (values now match)
+    st.markdown("<div style='font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d4e8d4;margin-bottom:14px;'>🏆 Top Undervalued Picks</div>",unsafe_allow_html=True)
+    top=all_pred[all_pred["difference_eur"]<-2e6].nsmallest(8,"difference_eur")
+    for _,r in top.iterrows():
+        color=POS_COLORS.get(r["position"],"#00ff87")
+        gap=abs(r["difference_eur"])/1e6
+        pct=gap/(r["market_value_in_eur"]/1e6+1e-5)*100
+        sl=r.get("season_label","")
+        st.markdown(f"""<div style="background:#0d160d;border:1px solid #1a2e1a;border-left:4px solid {color};
+             border-radius:12px;padding:14px 20px;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-weight:700;font-size:15px;color:#d4e8d4;">{r["player"]}</span>
+              <span style="color:#d4e8d4;font-size:12px;">{r["squad"]} · Age {int(r["age"])}</span>
+              <span style="background:{color}22;color:{color};font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;">{r["position"][:3].upper()}</span>
+              <span style="background:#1a2e1a;color:#d4e8d4;font-size:9px;padding:2px 8px;border-radius:20px;">{sl}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="color:#d4e8d4;font-size:12px;">Market <b style="color:#d4e8d4;">{fmt(r["market_value_in_eur"]/1e6)}</b></span>
+              <span style="color:#d4e8d4;">→</span>
+              <span style="color:#d4e8d4;font-size:12px;">Model <b style="color:{color};">{fmt(r["predicted_value"]/1e6)}</b></span>
+              <span style="background:rgba(255,80,80,0.12);color:#ff5050;font-weight:700;padding:4px 12px;border-radius:8px;font-size:13px;">
+                -{fmt(gap)} <span style="font-size:10px;opacity:0.7;">({pct:.0f}%)</span>
+              </span>
+            </div>
+          </div>
+        </div>""",unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 # UNDERVALUED  — FIX: uses pre-saved preds CSVs (same as Home tab)
