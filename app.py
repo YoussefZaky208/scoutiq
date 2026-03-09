@@ -1160,7 +1160,9 @@ def page_predict(full,models,lm):
         if len(pred_arr)>0:
             pred_m=max(float(pred_arr[0]),0)/1e6
             color=POS_COLORS.get(pos_sel,ACCENT)
-            tier_label = "Top 6 Club" if is_top6 else "🏟️ Non-Top 6 Club"
+            tier_label = "Top 6 Club" if is_top6 else "Non-Top 6 Club"
+            save_stats = {k:v for k,v in row.items() if k not in ["squad","nation","season"]}
+            save_prediction(st.session_state.username, pos_sel, tier_label, age, pred_m, save_stats)
             st.markdown(f"""<div style="background:{CARD_BG};border:1px solid {BORDER};border-top:3px solid {color};border-radius:18px;padding:40px;margin-top:20px;text-align:center;box-shadow:0 4px 24px {SHADOW};">
               <div style="color:{SUBTEXT};font-size:10px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">
                 Predicted Market Value · {pos_sel}</div>
@@ -1169,6 +1171,7 @@ def page_predict(full,models,lm):
               <div style="color:{SUBTEXT};font-size:13px;margin-top:14px;">
                 {tier_label} · Age {age} · {pos_sel}
               </div>
+              <div style="color:{SUBTEXT};font-size:11px;margin-top:8px;opacity:0.7;">✅ Saved to Prediction History</div>
             </div>""",unsafe_allow_html=True)
 
 
