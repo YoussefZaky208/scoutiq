@@ -106,6 +106,47 @@ def init_db():
         username TEXT UNIQUE NOT NULL,
         email TEXT UNIQUE NOT NULL,
         password_hash TEXT NOT NULL)""")
+    conn.execute("""CREATE TABLE IF NOT EXISTS predictions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        position TEXT,
+        club_tier TEXT,
+        age INTEGER,
+        predicted_value REAL,
+        stats_json TEXT,
+        created_at TEXT DEFAULT (datetime('now')))""")
+    conn.commit(); conn.close()
+
+def save_prediction(username, position, club_tier, age, predicted_value, stats_dict):
+    import json, datetime
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute(
+        "INSERT INTO predictions(username,position,club_tier,age,predicted_value,stats_json,created_at) VALUES(?,?,?,?,?,?,?)",
+        (username, position, club_tier, age, predicted_value,
+         json.dumps(stats_dict), datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+    )
+    conn.commit(); conn.close()
+
+def get_predictions(username):
+    import json
+    conn = sqlite3.connect(DB_PATH)
+    rows = conn.execute(
+        "SELECT id,position,club_tier,age,predicted_value,stats_json,created_at FROM predictions WHERE username=? ORDER BY id DESC",
+        (username,)
+    ).fetchall()
+    conn.close()
+    result = []
+    for r in rows:
+        stats = {}
+        try: stats = json.loads(r[5]) if r[5] else {}
+        except: pass
+        result.append({"id":r[0],"position":r[1],"club_tier":r[2],"age":r[3],
+                        "predicted_value":r[4],"stats":stats,"created_at":r[6]})
+    return result
+
+def delete_prediction(pred_id):
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute("DELETE FROM predictions WHERE id=?", (pred_id,))
     conn.commit(); conn.close()
 
 def hash_pw(p): return hashlib.sha256(p.encode()).hexdigest()
@@ -416,7 +457,7 @@ def sidebar(lm=False):
 </div>""",unsafe_allow_html=True)
 
         page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
-                           "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
+                           "🔍  Player Lookup","🤖  Predict New Player","📋  Prediction History"],label_visibility="collapsed")
 
         st.markdown(f"""<div style="border-top:1px solid {SB_BORD};padding-top:16px;">
           <div style="color:{SB_SUB};font-size:11px;text-transform:uppercase;letter-spacing:1px;">Logged in as</div>
@@ -1130,6 +1171,228 @@ def page_predict(full,models,lm):
               </div>
             </div>""",unsafe_allow_html=True)
 
+
+# ══════════════════════════════════════════════════════════════
+# PREDICTION HISTORY
+# ══════════════════════════════════════════════════════════════
+def page_history(lm):
+    import json, io
+    scroll_top()
+    POS_COLORS = POS_COLORS_LIGHT if lm else POS_COLORS_DARK
+
+    BG        = "#f0f4f0"  if lm else "#080c08"
+    CARD_BG   = "#ffffff"  if lm else "#0d160d"
+    CARD_BG2  = "#f5faf5"  if lm else "#0a140a"
+    TEXT      = "#1a2e1a"  if lm else "#d4e8d4"
+    SUBTEXT   = "#4a6a4a"  if lm else "#a0b8a0"
+    BORDER    = "#b0cbb0"  if lm else "#1a2e1a"
+    ACCENT    = "#00aa55"  if lm else "#00ff87"
+    RED       = "#cc2200"  if lm else "#ff5050"
+    SHADOW    = "rgba(0,100,50,0.1)" if lm else "rgba(0,0,0,0.5)"
+    TH_BG     = "#e8f5e8"  if lm else "#0d1f0d"
+
+    st.markdown("## 📋 Prediction History")
+    st.markdown(f"<div style='color:{SUBTEXT};margin-bottom:20px;font-size:13px;'>All predictions you have run, saved automatically. Export to Excel or PDF anytime.</div>", unsafe_allow_html=True)
+
+    preds = get_predictions(st.session_state.username)
+
+    if not preds:
+        st.markdown(f"""<div style="background:{CARD_BG};border:1px solid {BORDER};border-radius:18px;padding:60px;text-align:center;box-shadow:0 4px 24px {SHADOW};">
+          <div style="font-size:48px;margin-bottom:16px;">📭</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:{TEXT};letter-spacing:2px;">No Predictions Yet</div>
+          <div style="color:{SUBTEXT};font-size:13px;margin-top:8px;">Head to the Predict New Player tab to get started.</div>
+        </div>""", unsafe_allow_html=True)
+        return
+
+    # ── Summary stats row ──
+    total = len(preds)
+    avg_val = sum(p["predicted_value"] for p in preds) / total
+    max_val = max(p["predicted_value"] for p in preds)
+    positions_done = len(set(p["position"] for p in preds))
+
+    c1,c2,c3,c4 = st.columns(4)
+    for col,(num,lbl) in zip([c1,c2,c3,c4],[
+        (total, "Total Predictions"),
+        (f"€{avg_val:.1f}M", "Avg Predicted Value"),
+        (f"€{max_val:.1f}M", "Highest Prediction"),
+        (positions_done, "Positions Predicted"),
+    ]):
+        with col:
+            st.markdown(f"""<div style="background:{CARD_BG};border:1px solid {BORDER};border-radius:14px;padding:18px 14px;text-align:center;box-shadow:0 2px 10px {SHADOW};margin-bottom:16px;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:{ACCENT};line-height:1;">{num}</div>
+              <div style="color:{SUBTEXT};font-size:10px;text-transform:uppercase;letter-spacing:2px;margin-top:4px;">{lbl}</div>
+            </div>""", unsafe_allow_html=True)
+
+    # ── Export all button ──
+    if len(preds) > 0:
+        all_rows = []
+        for p in preds:
+            row_data = {"Date": p["created_at"], "Position": p["position"],
+                        "Club Tier": p["club_tier"], "Age": p["age"],
+                        "Predicted Value (€M)": round(p["predicted_value"], 2)}
+            row_data.update({k: v for k, v in p["stats"].items()
+                             if k not in ["squad","nation","season","Goals & Assists"]})
+            all_rows.append(row_data)
+        df_all = pd.DataFrame(all_rows)
+
+        col_xl, col_pdf, _ = st.columns([1, 1, 4])
+        with col_xl:
+            xl_buf = io.BytesIO()
+            with pd.ExcelWriter(xl_buf, engine="openpyxl") as writer:
+                df_all.to_excel(writer, index=False, sheet_name="Prediction History")
+            xl_buf.seek(0)
+            st.download_button("📥 Export All (Excel)", xl_buf,
+                               file_name="prediction_history.xlsx",
+                               mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                               use_container_width=True)
+        with col_pdf:
+            try:
+                from reportlab.lib.pagesizes import A4, landscape
+                from reportlab.lib import colors as rl_colors
+                from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+                from reportlab.lib.styles import getSampleStyleSheet
+                from reportlab.lib.units import cm
+
+                pdf_buf = io.BytesIO()
+                doc = SimpleDocTemplate(pdf_buf, pagesize=landscape(A4),
+                                        leftMargin=1*cm, rightMargin=1*cm,
+                                        topMargin=1.5*cm, bottomMargin=1*cm)
+                styles = getSampleStyleSheet()
+                elements = []
+                elements.append(Paragraph(f"ScoutVision — Prediction History ({st.session_state.username})", styles["Title"]))
+                elements.append(Spacer(1, 0.4*cm))
+
+                cols_show = ["Date","Position","Club Tier","Age","Predicted Value (€M)"]
+                table_data = [cols_show]
+                for row_d in all_rows:
+                    table_data.append([str(row_d.get(c,"")) for c in cols_show])
+
+                tbl = Table(table_data, repeatRows=1)
+                tbl.setStyle(TableStyle([
+                    ("BACKGROUND", (0,0), (-1,0), rl_colors.HexColor("#0d160d")),
+                    ("TEXTCOLOR",  (0,0), (-1,0), rl_colors.HexColor("#00ff87")),
+                    ("FONTNAME",   (0,0), (-1,0), "Helvetica-Bold"),
+                    ("FONTSIZE",   (0,0), (-1,0), 9),
+                    ("ROWBACKGROUNDS", (0,1), (-1,-1), [rl_colors.white, rl_colors.HexColor("#f5faf5")]),
+                    ("FONTSIZE",   (0,1), (-1,-1), 8),
+                    ("GRID",       (0,0), (-1,-1), 0.4, rl_colors.HexColor("#c8e0c8")),
+                    ("ALIGN",      (0,0), (-1,-1), "CENTER"),
+                    ("VALIGN",     (0,0), (-1,-1), "MIDDLE"),
+                    ("ROWHEIGHT",  (0,0), (-1,-1), 18),
+                ]))
+                elements.append(tbl)
+                doc.build(elements)
+                pdf_buf.seek(0)
+                st.download_button("📄 Export All (PDF)", pdf_buf,
+                                   file_name="prediction_history.pdf",
+                                   mime="application/pdf",
+                                   use_container_width=True)
+            except ImportError:
+                st.info("PDF export requires reportlab. Install with: pip install reportlab")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # ── Individual prediction cards ──
+    for p in preds:
+        color = POS_COLORS.get(p["position"], ACCENT)
+        stats = p["stats"]
+
+        with st.expander(f"  {p['position']}  ·  {p['club_tier']}  ·  Age {p['age']}  ·  €{p['predicted_value']:.1f}M  —  {p['created_at']}", expanded=False):
+
+            # Stats grid
+            stat_items = [(k, v) for k, v in stats.items()
+                          if k not in ["Goals & Assists"] and not k.startswith("_")]
+            if stat_items:
+                st.markdown(f"<div style='display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;'>", unsafe_allow_html=True)
+                cols_per_row = 4
+                rows_of_stats = [stat_items[i:i+cols_per_row] for i in range(0, len(stat_items), cols_per_row)]
+                for stat_row in rows_of_stats:
+                    cols = st.columns(cols_per_row)
+                    for ci, (k, v) in enumerate(stat_row):
+                        with cols[ci]:
+                            display_val = f"{v:.2f}" if isinstance(v, float) else str(v)
+                            st.markdown(f"""<div style="background:{CARD_BG2};border:1px solid {BORDER};border-radius:10px;padding:10px 12px;text-align:center;">
+                              <div style="color:{SUBTEXT};font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">{k}</div>
+                              <div style="color:{color};font-weight:700;font-size:15px;">{display_val}</div>
+                            </div>""", unsafe_allow_html=True)
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            st.markdown("<br>", unsafe_allow_html=True)
+
+            # Per-prediction export + delete
+            col_a, col_b, col_c, _ = st.columns([1, 1, 1, 3])
+
+            # Single Excel export
+            with col_a:
+                single_row = {"Date": p["created_at"], "Position": p["position"],
+                              "Club Tier": p["club_tier"], "Age": p["age"],
+                              "Predicted Value (€M)": round(p["predicted_value"], 2)}
+                single_row.update(stats)
+                df_single = pd.DataFrame([single_row])
+                xl_single = io.BytesIO()
+                with pd.ExcelWriter(xl_single, engine="openpyxl") as writer:
+                    df_single.to_excel(writer, index=False, sheet_name="Prediction")
+                xl_single.seek(0)
+                st.download_button("📥 Excel", xl_single,
+                                   file_name=f"prediction_{p['id']}.xlsx",
+                                   mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                   use_container_width=True,
+                                   key=f"xl_{p['id']}")
+
+            # Single PDF export
+            with col_b:
+                try:
+                    from reportlab.lib.pagesizes import A4
+                    from reportlab.lib import colors as rl_colors
+                    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+                    from reportlab.lib.styles import getSampleStyleSheet
+                    from reportlab.lib.units import cm
+
+                    pdf_single = io.BytesIO()
+                    doc2 = SimpleDocTemplate(pdf_single, pagesize=A4,
+                                             leftMargin=2*cm, rightMargin=2*cm,
+                                             topMargin=2*cm, bottomMargin=2*cm)
+                    styles2 = getSampleStyleSheet()
+                    elems2 = []
+                    elems2.append(Paragraph(f"ScoutVision — Prediction Report", styles2["Title"]))
+                    elems2.append(Paragraph(f"{p['position']} · {p['club_tier']} · Age {p['age']} · €{p['predicted_value']:.1f}M · {p['created_at']}", styles2["Normal"]))
+                    elems2.append(Spacer(1, 0.5*cm))
+                    stat_table_data = [["Stat", "Value"]]
+                    for k2, v2 in stats.items():
+                        if k2 not in ["Goals & Assists"]:
+                            display_v = f"{v2:.2f}" if isinstance(v2, float) else str(v2)
+                            stat_table_data.append([k2, display_v])
+                    tbl2 = Table(stat_table_data, colWidths=[10*cm, 5*cm], repeatRows=1)
+                    tbl2.setStyle(TableStyle([
+                        ("BACKGROUND", (0,0), (-1,0), rl_colors.HexColor("#0d160d")),
+                        ("TEXTCOLOR",  (0,0), (-1,0), rl_colors.HexColor("#00ff87")),
+                        ("FONTNAME",   (0,0), (-1,0), "Helvetica-Bold"),
+                        ("FONTSIZE",   (0,0), (-1,0), 10),
+                        ("ROWBACKGROUNDS", (0,1), (-1,-1), [rl_colors.white, rl_colors.HexColor("#f5faf5")]),
+                        ("FONTSIZE",   (0,1), (-1,-1), 9),
+                        ("GRID",       (0,0), (-1,-1), 0.4, rl_colors.HexColor("#c8e0c8")),
+                        ("ALIGN",      (1,0), (1,-1), "CENTER"),
+                        ("VALIGN",     (0,0), (-1,-1), "MIDDLE"),
+                        ("ROWHEIGHT",  (0,0), (-1,-1), 20),
+                    ]))
+                    elems2.append(tbl2)
+                    doc2.build(elems2)
+                    pdf_single.seek(0)
+                    st.download_button("📄 PDF", pdf_single,
+                                       file_name=f"prediction_{p['id']}.pdf",
+                                       mime="application/pdf",
+                                       use_container_width=True,
+                                       key=f"pdf_{p['id']}")
+                except ImportError:
+                    st.caption("reportlab needed for PDF")
+
+            # Delete button
+            with col_c:
+                if st.button("🗑 Delete", key=f"del_{p['id']}", use_container_width=True):
+                    delete_prediction(p["id"])
+                    st.rerun()
+
+
 # ══════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════
@@ -1181,5 +1444,6 @@ def main():
     elif "Performance" in page: page_perf(preds,full,lm)
     elif "Lookup"      in page: page_lookup(full,models,lm)
     elif "Predict"     in page: page_predict(full,models,lm)
+    elif "History"     in page: page_history(lm)
 
 main()
