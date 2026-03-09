@@ -389,7 +389,7 @@ def run_predictions(full,models,pos_filter="All",season_filter="All"):
     return pd.concat(results,ignore_index=True) if results else pd.DataFrame()
 
 # ── SIDEBAR ───────────────────────────────────────────────────
-def sidebar():
+def sidebar(lm=False):
     with st.sidebar:
         st.markdown("""<div style="padding:20px 0 20px 0;border-bottom:1px solid #1a2e1a;margin-bottom:20px;text-align:center;">
   <div style="display:flex;justify-content:center;margin-bottom:10px;">
@@ -414,7 +414,7 @@ def sidebar():
 # ══════════════════════════════════════════════════════════════
 # HOME
 # ══════════════════════════════════════════════════════════════
-def page_home(preds,full):
+def page_home(preds,full,lm):
     st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     all_pred=pd.concat(preds.values(),ignore_index=True)
@@ -501,7 +501,7 @@ def page_home(preds,full):
 # UNDERVALUED  — FIX: uses pre-saved preds CSVs (same as Home tab)
 #                      so values always match. No model re-runs = fast.
 # ══════════════════════════════════════════════════════════════
-def page_undervalued(preds,full,models):
+def page_undervalued(preds,full,models,lm):
     st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     st.markdown("## 💎 Undervalued Players")
@@ -712,7 +712,7 @@ def page_perf(preds,full):
 # ══════════════════════════════════════════════════════════════
 # PLAYER LOOKUP
 # ══════════════════════════════════════════════════════════════
-def page_lookup(full,models):
+def page_lookup(full,models,lm):
     st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
     scroll_top()
     st.markdown('<script>window.scrollTo(0,0);</script>', unsafe_allow_html=True)
@@ -805,7 +805,7 @@ def rng_label(label,mn,avg,mx,unit="",per90=False):
     badge='<span class="p90-badge">PER 90</span>' if per90 else ""
     st.markdown(f'<span class="rng"><b>{label}</b>{badge} &nbsp; Min: {mn}{unit} &nbsp;·&nbsp; Avg: {avg}{unit} &nbsp;·&nbsp; Max: {mx}{unit}</span>',unsafe_allow_html=True)
 
-def page_predict(full,models):
+def page_predict(full,models,lm):
     st.markdown("## 🤖 Predict New Player Market Value")
     st.markdown("""<div style="background:#0d160d;border:1px solid #1a2e1a;border-left:3px solid #00ff87;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:#d4e8d4;">
         <b style="color:#00ff87;">How this works:</b> Enter a player's season stats. The model uses performance metrics, club prestige, and season year to estimate fair market value.
@@ -1017,7 +1017,13 @@ def main():
         auth_page(); return
     preds,full=load_all_data()
     models=load_models()
-    page=sidebar()
+    lm=st.sidebar.toggle("☀️ Light Mode",key="lm")
+    if lm:
+        st.markdown("""<style>
+        [data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,[data-testid="stMainBlockContainer"]{background-color:#f5f5f5!important;}
+        section[data-testid="stSidebar"]{background-color:#e8e8e8!important;}
+        </style>""",unsafe_allow_html=True)
+    page=sidebar(lm)
 
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
@@ -1031,10 +1037,10 @@ def main():
     if st.session_state.get("_scroll_reset"):
         st.session_state["_scroll_reset"] = False
         st.markdown('<script>parent.document.querySelector("section.main").scrollTo(0,0);</script>', unsafe_allow_html=True)
-    if   "Home"        in page: page_home(preds,full)
-    elif "Undervalued" in page: page_undervalued(preds,full,models)
+    if   "Home"        in page: page_home(preds,full,lm)
+    elif "Undervalued" in page: page_undervalued(preds,full,models,lm)
     elif "Performance" in page: page_perf(preds,full)
-    elif "Lookup"      in page: page_lookup(full,models)
-    elif "Predict"     in page: page_predict(full,models)
+    elif "Lookup"      in page: page_lookup(full,models,lm)
+    elif "Predict"     in page: page_predict(full,models,lm)
 
 main()
