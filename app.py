@@ -395,7 +395,7 @@ def sidebar():
   <div style="display:flex;justify-content:center;margin-bottom:10px;">
     <div style="width:65px;height:65px;border-radius:50%;border:2px solid #00ff87;background:radial-gradient(circle at 35% 35%,#1a2e1a,#080c08);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,255,135,0.3);font-size:34px;">⚽</div>
   </div>
-  <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#00ff87;letter-spacing:4px;line-height:1.1;">ScoutVision</div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#00ff87!important;letter-spacing:4px;line-height:1.1;text-shadow:0 0 10px rgba(0,255,135,0.5);">ScoutVision</div>
   <div style="color:#a0b8a0;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;line-height:1.6;margin-top:4px;">Turning performance data into<br>transfer market intelligence</div>
 </div>""",unsafe_allow_html=True)
         page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
