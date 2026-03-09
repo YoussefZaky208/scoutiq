@@ -398,10 +398,8 @@ def sidebar():
   <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#00ff87;letter-spacing:6px;line-height:1;font-size:28px;text-shadow:0 0 15px #00ff87,0 0 30px rgba(0,255,135,0.5);">SCOUTVISION</div>
   <div style="color:#a0b8a0;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;line-height:1.6;margin-top:4px;">Turning performance data into<br>transfer market intelligence</div>
 </div>""",unsafe_allow_html=True)
-        if "light_mode" not in st.session_state:
-            st.session_state.light_mode = False
-        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode, key="lm_toggle")
-        if st.session_state.light_mode:
+        light_mode = st.toggle("☀️ Light Mode", key="lm_toggle")
+        if light_mode:
             st.markdown("""<style>
             html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
             section[data-testid="stSidebar"]{background-color:#e8f5e9!important;}
@@ -414,10 +412,8 @@ def sidebar():
             [data-testid="stMetricValue"]{color:#1a1a1a!important;}
             </style>""", unsafe_allow_html=True)
         st.markdown("---")
-        if "light_mode" not in st.session_state:
-            st.session_state.light_mode = False
-        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode, key="lm_toggle")
-        if st.session_state.light_mode:
+        light_mode = st.toggle("☀️ Light Mode", key="lm_toggle")
+        if light_mode:
             st.markdown("""<style>
             html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
             section[data-testid="stSidebar"]{background-color:#e8f5e9!important;}
