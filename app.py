@@ -950,12 +950,12 @@ def page_predict(full,models,lm):
         st.markdown(f"<p style='color:{TEXT};font-size:14px;margin-bottom:6px;font-weight:600;'>Club Tier</p>", unsafe_allow_html=True)
         top6_choice = st.radio(
             "Club Tier",
-            ["⭐ Top 6 Club", "🏟️ Not Top 6"],
+            ["Top 6 Club", "Not Top 6"],
             horizontal=True,
             label_visibility="collapsed",
             help="Top 6: Man City, Liverpool, Chelsea, Arsenal, Man Utd, Tottenham"
         )
-    is_top6 = top6_choice.startswith("⭐")
+    is_top6 = top6_choice== "Top 6 Club"
 
     # Map Top 6 toggle → a representative squad for squad_target_enc
     pos_key = pos_sel.lower()
@@ -1115,14 +1115,15 @@ def page_predict(full,models,lm):
             if not(900<=minutes<=3420): warnings_list.append(f"Minutes {minutes} — typical range: 900–3420")
             if not(0<=svpct<=100): warnings_list.append(f"Save % {svpct} — must be 0–100")
         if warnings_list:
-            st.warning("⚠ Some stats are outside the training data range — prediction may be less reliable:\n" + "\n".join(f"• {w}" for w in warnings_list))
+            st.error("⚠️ Please fix the following inputs before predicting:\n" + "\n".join(f"• {w}" for w in warnings_list))
+            st.stop()
         df_row=pd.DataFrame([row])
         df_fe=fe(df_row,pos_key,m["squad_map"],m["nation_map"])
         pred_arr=predict_df(df_fe,pos_key,models)
         if len(pred_arr)>0:
             pred_m=max(float(pred_arr[0]),0)/1e6
             color=POS_COLORS.get(pos_sel,ACCENT)
-            tier_label = "⭐ Top 6 Club" if is_top6 else "🏟️ Non-Top 6 Club"
+            tier_label = "Top 6 Club" if is_top6 else "🏟️ Non-Top 6 Club"
             st.markdown(f"""<div style="background:{CARD_BG};border:1px solid {BORDER};border-top:3px solid {color};border-radius:18px;padding:40px;margin-top:20px;text-align:center;box-shadow:0 4px 24px {SHADOW};">
               <div style="color:{SUBTEXT};font-size:10px;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;">
                 Predicted Market Value · {pos_sel}</div>
