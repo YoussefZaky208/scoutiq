@@ -1020,15 +1020,26 @@ def main():
     page=sidebar()
     if st.sidebar.toggle("☀️ Light Mode", key="light_mode_toggle"):
         st.markdown("""<style>
-        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
-        section[data-testid="stSidebar"]{background-color:#e8f5e9!important;}
+        html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp,
+        [data-testid="stMainBlockContainer"],[data-testid="block-container"]{background-color:#f0f4f0!important;color:#1a1a1a!important;}
+        section[data-testid="stSidebar"]{background-color:#dcedc8!important;}
         section[data-testid="stSidebar"] *{color:#1a1a1a!important;}
-        [data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
-        h1,h2,h3,h4,h5,h6{color:#1a1a1a!important;}
-        .stNumberInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;}
+        div[data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
+        div[data-testid="stMarkdownContainer"] *{color:#1a1a1a!important;}
+        h1,h2,h3,h4,h5,h6,p,span,label{color:#1a1a1a!important;}
+        .stNumberInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;border-color:#4caf50!important;}
         div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#1a1a1a!important;}
         .stSelectbox div{color:#1a1a1a!important;}
-        label{color:#1a1a1a!important;}
+        div[data-baseweb="select"] *{background:#ffffff!important;color:#1a1a1a!important;}
+        .stTextInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;}
+        div[data-testid="stForm"]{background:#ffffff!important;}
+        [class*="card"]{background:#ffffff!important;color:#1a1a1a!important;}
+        div[style*="background:#0d1a0d"]{background:#e8f5e9!important;}
+        div[style*="background:#0a120a"]{background:#f1f8f1!important;}
+        div[style*="background:#080c08"]{background:#f5faf5!important;}
+        div[style*="background:#111d11"]{background:#e8f5e9!important;}
+        div[style*="color:#d4e8d4"]{color:#1a1a1a!important;}
+        div[style*="color:#a0b8a0"]{color:#2a5a2a!important;}
         </style>""", unsafe_allow_html=True)
     if "current_page" not in st.session_state:
         st.session_state.current_page = page
