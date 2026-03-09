@@ -70,33 +70,7 @@ div[data-testid="stRadio"] label p{color:#ffffff!important;}
 div[data-testid="stRadio"] span{color:#ffffff!important;}
 .stTextInput label p{color:#ffffff!important;}
 .stTextInput>label{color:#ffffff!important;}
-/* Download buttons dark mode */
-[data-testid="stDownloadButton"] button{
-    background:#0d160d!important;
-    border:1px solid #1a2e1a!important;
-    color:#d4e8d4!important;
-    border-radius:10px!important;
-}
-[data-testid="stDownloadButton"] button:hover{
-    border-color:#00ff87!important;
-    color:#00ff87!important;
-}
-/* Expander dark mode */
-[data-testid="stExpander"]{
-    background:#0d160d!important;
-    border:1px solid #1a2e1a!important;
-    border-radius:12px!important;
-}
-[data-testid="stExpander"] summary{
-    background:#0d160d!important;
-    color:#d4e8d4!important;
-}
-[data-testid="stExpander"] summary:hover{
-    color:#00ff87!important;
-}
-[data-testid="stExpander"] div[data-testid="stExpanderDetails"]{
-    background:#0d160d!important;
-}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -1449,6 +1423,17 @@ def main():
     # Apply light mode CSS first so everything renders correctly
     if lm_current:
         apply_light_mode()
+    else:
+        st.markdown("""<style>
+[data-testid="stDownloadButton"] button{
+    background:#0d160d!important;border:1px solid #1a2e1a!important;
+    color:#d4e8d4!important;border-radius:10px!important;}
+[data-testid="stDownloadButton"] button:hover{border-color:#00ff87!important;color:#00ff87!important;}
+[data-testid="stExpander"]{background:#0d160d!important;border:1px solid #1a2e1a!important;border-radius:12px!important;}
+[data-testid="stExpander"] summary{background:#0d160d!important;color:#d4e8d4!important;}
+[data-testid="stExpander"] summary:hover{color:#00ff87!important;}
+[data-testid="stExpander"] div[data-testid="stExpanderDetails"]{background:#0d160d!important;}
+</style>""", unsafe_allow_html=True)
 
     page, lm_new = sidebar(lm_current)
 
