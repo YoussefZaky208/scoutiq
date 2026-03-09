@@ -398,6 +398,22 @@ def sidebar():
   <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#00ff87;letter-spacing:6px;line-height:1;font-size:28px;text-shadow:0 0 15px #00ff87,0 0 30px rgba(0,255,135,0.5);">SCOUTVISION</div>
   <div style="color:#a0b8a0;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;line-height:1.6;margin-top:4px;">Turning performance data into<br>transfer market intelligence</div>
 </div>""",unsafe_allow_html=True)
+        if "light_mode" not in st.session_state:
+            st.session_state.light_mode = False
+        st.session_state.light_mode = st.toggle("☀️ Light Mode", value=st.session_state.light_mode)
+        if st.session_state.light_mode:
+            st.markdown("""<style>
+            html,body,[class*="css"],[data-testid="stAppViewContainer"],[data-testid="stApp"],.main,.stApp{background-color:#f8f9fa!important;color:#1a1a1a!important;}
+            section[data-testid="stSidebar"]{background-color:#e8f5e9!important;}
+            section[data-testid="stSidebar"] *{color:#1a1a1a!important;}
+            .stNumberInput>div>div>input{background:#ffffff!important;color:#1a1a1a!important;border-color:#4caf50!important;}
+            div[data-testid="stNumberInput"] input{background:#ffffff!important;color:#1a1a1a!important;}
+            div[data-testid="stMarkdownContainer"] p{color:#1a1a1a!important;}
+            .stSelectbox div{color:#1a1a1a!important;}
+            h1,h2,h3,h4,h5,h6{color:#1a1a1a!important;}
+            [data-testid="stMetricValue"]{color:#1a1a1a!important;}
+            </style>""", unsafe_allow_html=True)
+        st.markdown("---")
         page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
                            "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
         st.markdown("<br><br><br>",unsafe_allow_html=True)
