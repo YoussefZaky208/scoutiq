@@ -418,7 +418,6 @@ def sidebar(lm=False):
         page=st.radio("",["🏠  Home","💎  Undervalued Players","📊  Model Performance",
                            "🔍  Player Lookup","🤖  Predict New Player"],label_visibility="collapsed")
 
-        st.markdown("<br><br><br>",unsafe_allow_html=True)
         st.markdown(f"""<div style="border-top:1px solid {SB_BORD};padding-top:16px;">
           <div style="color:{SB_SUB};font-size:11px;text-transform:uppercase;letter-spacing:1px;">Logged in as</div>
           <div style="color:{ACCENT};font-weight:600;margin-top:4px;">{st.session_state.username}</div>
@@ -427,10 +426,7 @@ def sidebar(lm=False):
         if st.button("Logout",use_container_width=True):
             st.session_state.clear()
             st.rerun()
-
-        # ── Light mode toggle at the BOTTOM ──
-        st.markdown("<br><br>",unsafe_allow_html=True)
-        st.markdown(f"<hr style='border-color:{SB_BORD};margin:0 0 12px 0;'>",unsafe_allow_html=True)
+        st.markdown("<br>",unsafe_allow_html=True)
         lm_new = st.toggle("☀️ Light Mode", value=lm, key="lm")
 
     return page, lm_new
