@@ -1443,7 +1443,7 @@ def main():
     elif "Undervalued" in page: page_undervalued(preds,full,models,lm)
     elif "Performance" in page: page_perf(preds,full,lm)
     elif "Lookup"      in page: page_lookup(full,models,lm)
-    elif "Predict"     in page: page_predict(full,models,lm)
     elif "History"     in page: page_history(lm)
+    elif "Predict"     in page: page_predict(full,models,lm)
 
 main()
